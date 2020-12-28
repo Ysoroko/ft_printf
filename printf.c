@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:27:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/26 13:02:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/28 10:10:29 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,50 @@ static char	*next_argument_type(const char *str)
 }
 
 /*
+** This function takes into account the ". and width flags"
+** Returns the number of chars needed to create the output string
+*/
+static int	space_for_printed_string(const char *str)
+{
+	int count;
+	int i;
+
+	count = 0;
+	i = 0;
+	while (str[i] != '%')
+		count++;
+	
+}
+
+/*
 ** Returns the expected parameters number based on the amount of "%" in the str
 ** This means that the str itself isn't counted in the return value
 */
-static int	count_params_number(const char *str)
+static int	count_exepcted_params_number(const char *str)
 {
 	int	i;
 	int	count;
+	int	str_len;
 
 	if (str == 0)
 		return (0);
 	i = 0;
 	count = 0;
+	str_len = ft_strlen(str);
 	while (str[i] != '\0')
 	{
-		if(str[i] == '%')
-			count++;
+		if (i < str_len - 1)
+		{
+			if(str[i] == '%' && str[i+1]!= '%')
+				count++;
+		}
+		else
+		{
+			if(str[i] == '%' && str[i - 1] != '%')
+				return (0);
+		}
+		
+		
 	}
 	return (count);
 }
@@ -79,6 +107,7 @@ static int	count_params_number(const char *str)
 int			ft_printf(const char *str, ...)
 {
 	va_list	a_list;
+	va_list	a_list_copy;
 	char	*type;
 	int		param_number;
 	int		i;
@@ -86,10 +115,10 @@ int			ft_printf(const char *str, ...)
 	if (str == 0)
 		return (0);
 	i = 0;
-	param_number = count_params_number(str);
+	param_number = count_expected_params_number(str);
 	va_start(a_list, str);
 
-
+	va_copy(a_list_copy, a_list);
 
 	va_end(a_list);
 
