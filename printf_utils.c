@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 15:20:47 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/28 17:27:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/28 17:53:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ int		ft_char_defines_type(char c)
 ** The list then stores all the flags inside 
 */
 
-int		ft_flags_to_list(char *str_c, t_list *list, int before_point, char *atoi_ptr)
+int		ft_flags_to_list(char *str_c, t_list *list, int before_point)
 {
-	int	n;
 	if (before_point == 1)
 	{
 		if (str_c[0] == '-')
@@ -50,10 +49,8 @@ int		ft_flags_to_list(char *str_c, t_list *list, int before_point, char *atoi_pt
 		//To check for 0 + extract the width
 		else if (ft_is_digit(str_c[0]) && n = ft_atoi(atoi_ptr))
 			list -> width_flag = n;
-		//UPDATE THIS
+		//UPDATE THIS FOR THE ZERO FLAG
 		else
-			list -> zero_flag = 1;
-		else if (ft_is_digit(str_c[0]) && !ft_atoi(str_c))
 			list -> zero_flag = 1;
 		else if (str_c[0] == '*')
 			list->star_before_point = 1;
@@ -62,9 +59,11 @@ int		ft_flags_to_list(char *str_c, t_list *list, int before_point, char *atoi_pt
 	{
 		if (str_c[0] == '-')
 			list->error = 1;
+		//TO UPDATE
 		else if (ft_is_digit(str_c[0]))
 			list -> precision_flag = ft_atoi(atoi_ptr);
-
+		else if (str_c[0] == '*')
+			list->star_after_point = 1;
 	}
 	
 }
@@ -73,26 +72,33 @@ t_list	*ft_analyze_first_printf_argument(const char *str)
 {
 	int		i;
 	t_list	list;
-	char	*atoi_ptr;
+	t_list	current_list;
+
+	static int	atoi_next;
 
 	i = -1;
 	//don't forget to put all the variables of list to 0
 	if (str == 0 || !(list = lst_new()))
 		return (0);
+	current_list = list;
 	while (str[i] != 0)
 	{
 		while (str[++i] != '%' && str[i])
 			ft_putchar_fd(str[i], 1);
-		ptr_for_atoi = &str[i];
-		while (str[++i] != '.' && !ft_char_defines_type(str[i]))
+		while (str[++i] != '.' && !ft_char_defines_type(str[i]) && str[i])
+			ft_flags_to_list(&str[i], &current_list, 1);
+		if (str[i] == '.')
 		{
-			if (!ft_is_digit(str[i]))
-				ft_flags_to_list(&str[i], &list, 1);
-			else
-			{
-			
-			}
-				
-		
+			while (!ft_char_defines_type(str[++i]) && str[i])
+				ft_flags_to_list(&str[i], &current_list, 0);
+		}
+		if (!ft_char_defines_type(str[i]))	
+			current_list.error = 1;
+		else
+		{
+			current_list.type_flag = str[i];
+			current_list.next = ft_lstadd_back(t_list &list, current_list);
+		}
 	}
+	return (&list);
 }

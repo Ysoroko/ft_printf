@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/28 17:12:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/28 17:29:49 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int main()
 {
 	char	*str = "First";
 	int		n = 2;
-	printf("%20.-20s", "oops");
+	printf("%20.020s", "oops");
 	return (0);
 }
