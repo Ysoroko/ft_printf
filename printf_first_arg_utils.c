@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/29 14:15:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/29 14:29:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		ft_zero_before_n_in_str(char *str)
 {
 	int i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (!ft_isdigit(str[i]) && str[i])
 		i++;
@@ -45,7 +47,7 @@ char	*ft_extract_str(char *start, const char *charset)
 	char	*ret;
 
 	i = 0;
-	if (!start)
+	if (!start || !charset)
 		return (0);
 	while (!(ft_strchr(charset, start[i])) && start[i])
 		i++;
@@ -71,11 +73,11 @@ char	*ft_extract_str(char *start, const char *charset)
 /*
 ** This function checks each character in the string and saves the used flags
 ** in the initialised t_list which it returns
-** It divides the string into 2 parts, before and after the '.' flag
+** It divides the string into 2 parts, before and after the '.' flag to
 ** be able to tell the difference between precision and width and the '*' flags
 */
 
-t_list		*ft_flags_to_list(char *str_percent)
+t_list		*ft_flags_to_list(char *str_percent, t_list *current_list)
 {
 	char	*point;
 	char	*before_point;
@@ -104,6 +106,7 @@ t_list		*ft_flags_to_list(char *str_percent)
 	list->width_flag = ft_atoi(list->before_point);
 	list->zero_flag = ft_zero_before_n_in_str(list->before_point);
 	list->type_flag = str_percent[ft_strlen(str_percent) - 1];
+	current_list->next = list;
 	return (list);
 }
 
@@ -133,11 +136,10 @@ t_list	*ft_analyze_first_printf_argument(const char *str)
 		{
 			if (!(temp = ft_extract_str(&str[i], "cspdiuxX%")))
 				return (0);
-			if (!(current_list = ft_flags_to_list(temp)))
+			if (!(current_list = ft_flags_to_list(temp, current_list)))
 				return (0);
-			current_list = current_list->next;
 			free(temp);
 		}
 	}
-	return (&list);
+	return (list);
 }
