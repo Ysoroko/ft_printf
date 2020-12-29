@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/29 12:50:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/29 13:11:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,5 @@ typedef struct	s_str_with_flags_list
 }				t_list;
 
 int		ft_printf(const char *str, ...);
-void	c_flag(char c);
-void	s_flag(char *str);
-void	p_flag(void *ptr);
-void	d_i_flag(int n);
-void	u_flag(unsigned int n);
-void	x_flag(unsigned int n, char x);
-void	percent_flag(void);
 
 #endif
