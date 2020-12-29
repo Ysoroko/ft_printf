@@ -6,21 +6,40 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/29 12:56:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/29 14:15:48 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
 /*
+** This function is used to find whether there is a digit char in the string
+** And if yes, whether it starts with 0
+** If it starts with 0, returns 1
+** Returns 0 otherwise
+*/
+
+int		ft_zero_before_n_in_str(char *str)
+{
+	int i;
+
+	i = 0;
+	while (!ft_isdigit(str[i]) && str[i])
+		i++;
+	if (str[i] == '0')
+		return (1);
+	return (0);
+}
+
+/*
 ** This function is a modified strdup. Given the address of the '%' char
 ** it will extract the related flags string, duplicate it with malloc and 
 ** return its address. The extraction is done until a character from charset is
-** encountered 
+** encountered, this character is included in the copy
 ** Returns 0 in case of error
 */
 
-char	*ft_extract_str(char *start, const char charset)
+char	*ft_extract_str(char *start, const char *charset)
 {
 	int		i;
 	char	*ret;
@@ -30,10 +49,17 @@ char	*ft_extract_str(char *start, const char charset)
 		return (0);
 	while (!(ft_strchr(charset, start[i])) && start[i])
 		i++;
+	if (ft_strchr(charset, start[i]) && start[i] != 0)
+		i++;
 	if (!(ret = malloc(sizeof(*ret) * (i + 1))))
 		return (0);
 	i = 0;
 	while (!(ft_strchr(charset, start[i])) && start[i])
+	{
+		ret[i] = start[i];
+		i++;
+	}
+	if (ft_strchr(charset, start[i]) && start[i] != 0)
 	{
 		ret[i] = start[i];
 		i++;
@@ -44,7 +70,9 @@ char	*ft_extract_str(char *start, const char charset)
 
 /*
 ** This function checks each character in the string and saves the used flags
-** The list then stores all the flags inside 
+** in the initialised t_list which it returns
+** It divides the string into 2 parts, before and after the '.' flag
+** be able to tell the difference between precision and width and the '*' flags
 */
 
 t_list		*ft_flags_to_list(char *str_percent)
@@ -54,32 +82,29 @@ t_list		*ft_flags_to_list(char *str_percent)
 	char	*after_point;
 	t_list	*list;
 
+	//lst_new to adapt
 	if (!str_percent || !(list = lst_new()));
 		return (0);
-	before_point = ft_extract_str(str_percent, ".");
-	after_point = 0;
-	if (point = strchr(str_percent, '.'))
+	list->before_point = ft_extract_str(str_percent, ".");
+	list->after_point = 0;
+	if (point = ft_strchr(str_percent, '.'))
 	{
 		list->point_flag = point;
-		after_point = ft_extract_str(point, "");
+		list->after_point = ft_extract_str(point, "");
 	}
-	if (after_point)
+	if (list->after_point)
 	{
-		//'-' Flag after '.' = error
-		list->error = strchr(after_point, '-'))
-		list->star_after_point = strchr(after_point, '*');
+		list->star_after_point = ft_strchr(list->after_point, '*');
 		//ATOI TO ADAPT
-		list->precision_flag = ft_atoi(after_point);
+		list->precision_flag = ft_atoi(list->after_point);
 	}
-	list->width_flag = ft_atoi(before_point);
-	list->minus_flag = strchr(before_point, '-');
-	list->star_before_point = strchr(before_point, '*');
+	list->minus_flag = ft_strchr(list->before_point, '-');
+	list->star_before_point = ft_strchr(list->before_point, '*');
 	//ATOI TO ADAPT
-	list->width_flag = ft_atoi(before_point);
-	//CREATE FUNCTION TO LOOK FOR 0
-	list->zero_flag =
-
-	
+	list->width_flag = ft_atoi(list->before_point);
+	list->zero_flag = ft_zero_before_n_in_str(list->before_point);
+	list->type_flag = str_percent[ft_strlen(str_percent) - 1];
+	return (list);
 }
 
 /*
@@ -91,8 +116,8 @@ t_list		*ft_flags_to_list(char *str_percent)
 t_list	*ft_analyze_first_printf_argument(const char *str)
 {
 	int		i;
-	t_list	list;
-	t_list	current_list;
+	t_list	*list;
+	t_list	*current_list;
 	char	*temp;
 
 	static int	atoi_next;
@@ -108,8 +133,10 @@ t_list	*ft_analyze_first_printf_argument(const char *str)
 		{
 			if (!(temp = ft_extract_str(&str[i], "cspdiuxX%")))
 				return (0);
-			ft_flags_to_list(temp);
-
+			if (!(current_list = ft_flags_to_list(temp)))
+				return (0);
+			current_list = current_list->next;
+			free(temp);
 		}
 	}
 	return (&list);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/29 13:11:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/29 14:11:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 typedef struct	s_str_with_flags_list
 {
+	//Malloc'd: before_point + after_point;
+	char							*before_point;
+	char							*after_point;
+	
 	char							*minus_flag;
 	char							*star_before_point;
 	char							*zero_flag;
