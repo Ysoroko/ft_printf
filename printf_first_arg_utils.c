@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/29 14:29:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/30 17:23:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*ft_extract_str(char *start, const char *charset)
 ** be able to tell the difference between precision and width and the '*' flags
 */
 
-t_list		*ft_flags_to_list(char *str_percent, t_list *current_list)
+t_list		*ft_flags_to_list(char *str_percent)
 {
 	char	*point;
 	char	*before_point;
@@ -120,7 +120,6 @@ t_list	*ft_analyze_first_printf_argument(const char *str)
 {
 	int		i;
 	t_list	*list;
-	t_list	*current_list;
 	char	*temp;
 
 	static int	atoi_next;
@@ -129,14 +128,13 @@ t_list	*ft_analyze_first_printf_argument(const char *str)
 	//don't forget to put all the variables of list to 0
 	if (str == 0 || !(list = lst_new()))
 		return (0);
-	current_list = list;
 	while (str[++i] != 0)
 	{
 		if (str[i] == '%')
 		{
 			if (!(temp = ft_extract_str(&str[i], "cspdiuxX%")))
 				return (0);
-			if (!(current_list = ft_flags_to_list(temp, current_list)))
+			if (!(list = ft_flags_to_list(temp)))
 				return (0);
 			free(temp);
 		}
