@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/30 17:23:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2020/12/30 17:25:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,23 +97,22 @@ t_list		*ft_flags_to_list(char *str_percent)
 	if (list->after_point)
 	{
 		list->star_after_point = ft_strchr(list->after_point, '*');
-		//ATOI TO ADAPT
+		//ATOI (isspace in it) TO ADAPT
 		list->precision_flag = ft_atoi(list->after_point);
 	}
 	list->minus_flag = ft_strchr(list->before_point, '-');
 	list->star_before_point = ft_strchr(list->before_point, '*');
-	//ATOI TO ADAPT
+	//ATOI TO ADAPT (isspace in it)
 	list->width_flag = ft_atoi(list->before_point);
 	list->zero_flag = ft_zero_before_n_in_str(list->before_point);
 	list->type_flag = str_percent[ft_strlen(str_percent) - 1];
-	current_list->next = list;
 	return (list);
 }
 
 /*
 ** This function extracts all the necessary information from
 ** the first argument of printf. The flags corresponding to each
-** next argument are stocked in a chained list data structure
+** next argument are stocked in a t_list data structure
 */
 
 t_list	*ft_analyze_first_printf_argument(const char *str)
