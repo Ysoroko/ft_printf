@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:31:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/02 15:47:19 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/02 16:59:46 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,7 @@ static int		ft_extreme(int number, unsigned long long extreme, int sign)
 	return (number * sign);
 }
 
-static int		ft_plus_or_minus(char *str, int i, int *sign)
-{
-	if (str[i] == '-')
-	{
-		*sign = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	return (i);
-}
-
-int				ft_atoi(const char *str)
+int				ft_atoi_p(const char *str)
 {
 	int					i;
 	int					sign;

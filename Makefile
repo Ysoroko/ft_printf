@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/02 15:48:47 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/02 17:03:06 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,21 +16,30 @@ CFLAGS			=	-Wall -Wextra -Werror
 
 SRC				=	ft_printf.c \
 					ft_printf_first_arg_utils.c \
-					ft_printf_t_list_utils.c \
-					ft_printf_list_processing.c \
-					main.c 
+					ft_t_list_utils.c \
+					ft_flags_processing.c \
+					ft_atoi_for_printf.c 
 
 BONUS			=	ft_lstadd_back.c \
 
-OBJS	=	$(SRC:.c=.o)
+OBJS			=	$(SRC:.c=.o) \
+					./libft/ft_strchr.o \
+					./libft/ft_isdigit.o \
+					./libft/ft_strlen.o \
+					./libft/ft_putchar_fd.o \
+					./libft/ft_putstr_fd.o
 
-NAME			=	printflibft.a
+NAME			=	libftprintf.a
 
 LINK			=	ar rc
 
+
 all: 		$(NAME)
 
-$(NAME):	$(OBJS)
+lib:		
+			make -C ./libft
+
+$(NAME):	lib $(OBJS) 
 			$(LINK) $(NAME) $(OBJS)
 
 bonus:		$(OBJS)
@@ -45,6 +54,6 @@ fclean:		clean
 re:			fclean all
 
 run:		$(NAME)
-			./a.out
+			gcc -Wall -Wextra -Werror libftprintf.a main.c ./libft/libft.a && ./a.out
 
 .PHONY:		all clean fclean re bonus run

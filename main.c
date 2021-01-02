@@ -6,22 +6,23 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/02 15:48:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/02 17:21:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "printf.h"
 
 int main()
 {
-	char	*str = "First";
-	int		n = 2;
+	//char	*str = "First";
+	//int		n = 2;
 
 	//STRING
 	//printf("%-0s", "oops");
 
 	//INT
-	ft_printf("%s\n", "Hello there");
+	ft_printf("%s\n", "Hello there\n");
 	return (0);
 }
 
