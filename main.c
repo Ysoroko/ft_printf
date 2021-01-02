@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/29 12:36:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/02 15:48:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 	//printf("%-0s", "oops");
 
 	//INT
-	printf("%.0d", n);
+	ft_printf("%s\n", "Hello there");
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2020/12/30 17:23:05 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/02 15:49:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct	s_str_with_flags_list
 {
+	char							*definer_str;
 	//Malloc'd: before_point + after_point;
 	char							*before_point;
 	char							*after_point;
@@ -33,6 +34,19 @@ typedef struct	s_str_with_flags_list
 	char							*error;
 }				t_list;
 
+# define FD 1
+
 int		ft_printf(const char *str, ...);
+t_list	*ft_analyze_first_printf_argument(const char *str, va_list *v_list);
+
+/*
+** Functions used for processing the components in t_list (= flags data)
+*/
+int	ft_process_list(t_list *list, va_list *v_list);
+
+/*
+** Functions used in manipulations of t_lists (creating, reading etc.)
+*/
+t_list	*ft_lstnew(void);
 
 #endif
