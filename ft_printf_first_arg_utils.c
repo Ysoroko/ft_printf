@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/02 17:22:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/03 12:59:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ t_list			*ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 			}
 			free(temp);
 		}
+		ft_putchar_fd(s[i], FD);
 	}
 	return (list);
 }
