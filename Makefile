@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/02 17:03:06 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/04 13:18:45 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ fclean:		clean
 
 re:			fclean all
 
-run:		$(NAME)
+run:		
 			gcc -Wall -Wextra -Werror libftprintf.a main.c ./libft/libft.a && ./a.out
 
 .PHONY:		all clean fclean re bonus run

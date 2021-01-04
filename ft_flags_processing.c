@@ -6,11 +6,17 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/03 16:29:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 15:38:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+/*
+** FT_CHECK_FOR_MISTAKES
+** Checks for incompatible flags present in t_list argument (+ if va_list = 0)
+** Returns 1 in case of mistake found, 0 otherwise
+*/
 
 int	ft_check_for_mistakes(t_list *list, va_list *v_list)
 {
@@ -19,9 +25,18 @@ int	ft_check_for_mistakes(t_list *list, va_list *v_list)
 	//'0' flag present +type specifier is 's', 'c' or 'p'
 	if (list->zero_flag && (ft_strchr("scp", list->type_flag)))
 		return (1);
+	//'0' Flag before precision after '.' -> error
+	if (ft_zero_before_n_in_str(list->after_point))
+		return (1);
 	//Precision flag's undefined behaviour with 'c' and 'p' flags
 	if (list->precision_flag && (ft_strchr("cp", list->type_flag)))
 		return (1);
+	//All things that shouldn't be present in the string
+	if (ft_str_has_other_chars(list->definer_str, ACCEPTED_CHARS))
+		return (1);
+	if (ft_str_has_other_chars(list->after_point, "0123456789*cspdiuxX%"))
+		return (1);
+	return (0);
 }
 
 
@@ -35,9 +50,11 @@ int	ft_process_list(t_list *list, va_list *v_list)
 {
 	char	*str_to_print;
 
-	if (ft_check_t_list_for_mistakes(list, v_list))
+	if (ft_check_for_mistakes(list, v_list))
+	{
+		printf("Error found in t_list\n");
 		return (0);
-
+	}
 	//AND NO '*'!!!
 	if (list->type_flag == 's')
 	{

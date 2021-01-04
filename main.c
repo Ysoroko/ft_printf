@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/03 16:09:47 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 16:14:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 */
 
 
-
 int main()
 {
 	//char	*str = "First";
-	int		n = 14;
+	//int		n = 14;
 
 	//STRING
 	//printf("%-0s", "oops");
@@ -33,11 +32,16 @@ int main()
 
 	//"0" FLAG
 	//printf("08s + test: %08s\n", "test");
-	printf("%*.*s", 8, 3, "haha");
-
+	printf("%20.0015d", 15);
 	return (0);
 }
 
+
+
+/* 
+** PRINTF ARGUMENTS STRUCTURE
+** %[flags][width][.precision][length]specifier
+*/
 
 
 /*
@@ -60,6 +64,7 @@ int main()
 **				- By default, the character is formatted to the right (Ex: printf("%5s\n", "ha") --> "   ha")
 **				- If the width is too little to print the string, it's ignored ("Ex: printf("%2s\n", "haha"); --> "haha")
 **				- Works with all the formats "cspdiuxX% "
+**				- Several widths separated by other flags --> error
 **
 **
 ** "Precision":	Specifies the precision for the numbers (= number after '.' if it's present)
@@ -80,16 +85,22 @@ int main()
 ** 				- Ignored with no width, with '-' flag, and with precision present
 **				- If the width is less than the necessary spaces to print the number - ignored
 **				- Undefined behaviour with "%s", "%c" and "%p" type specifiers
+**				- Multiple "0" --> no problem
+**				- '0' after the point -> ignored
 **
 ** "-":			Instead of formatting the output string to the right, does it to the left
 **				- Example: "printf("%-4s\n", "ha"); --> "ha  "
 **				  (without the "-": "printf("%4s\n", "ha"); --> "  ha")
 **				- Overrides the "0" flag
 **				- Works with all the type specifiers: "cspdiuxX%"
+**				- "-" after the "." --> error
+**				- Multiple "-" befoe the "." --> no problem
 **
 ** "*":			Instead of the number explicitly written in first printf argument, the width or precision
 **				(depending on whether '*' is before orafter the '.' flag will be instead taken from the next printf argument)
 **				- Example: "printf("%*.*s", 8, 3, "haha") ---> "     hah" (Width = 8, Precision = 3)
+**				- Multiple "*" before/after '.' --> error
+**				- Both "*" and the width/precision int are present --> error
 */
 
 
