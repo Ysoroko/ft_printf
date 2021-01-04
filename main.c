@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 17:41:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 18:06:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main()
 	//printf("%-0s", "oops");
 
 	//INT
-	//ft_printf("Lol%s\n", "Hello there, general Kenobi\n");
+	//ft_printf("Lol%s\n", "Hello there\n");
 
 	//"0" FLAG
 	//printf("08s + test: %08s\n", "test");
@@ -104,27 +104,3 @@ int main()
 **				- Both "*" and the width/precision int are present --> error
 **				- '0' or '-' cannot be after '*' --> error
 */
-
-
-
-
-
-/*
-** ERRORS/SPECIAL CASES:
-*/
-// 1) printf("%.s", "oops"); --> point with no precision specified -> prints nothing
-// 2) printf("%*.s", "oops"); --> ERROR, too few args
-
-					//NUMBERS
-//printf("%88888888888888888888888888888888d", n); -> error because 88... is too big (outside of int)
-//printf("%0d", n); -> just prints n
-//printf("%.0d", n); -> just prints n
-
-
-					//ZERO FLAG
-// 3) printf("%-08d", n); --> FLAG '0' IGNORED WHEN '-' PRESENT (both are stuck to the left)
-// 4) printf("%.05d", n); --> flag '0' is ignored with the precision
-// 5) printf("%010", str); --> flag '0' undefined behaviour with a string
-
-					//'-' FLAG
-// 6) printf("%.-2s", str); --> Flag '-' after '.' = error

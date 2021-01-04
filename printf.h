@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 17:55:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 18:13:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct	s_str_with_flags_list
 {
 	char							*definer_str;
 	//Malloc'd: before_point + after_point;
-	char							*before_point;
-	char							*after_point;
+	char							*before_dot;
+	char							*after_dot;
 	
 	char							*minus_flag;
 	char							*star_before_point;
@@ -63,6 +63,11 @@ int		ft_str_has_char_from_charset(char *str, char *charset);
 int		ft_str_has_other_chars(char *str, char *charset);
 int		ft_number_of_c_char_in_str(char *str, char c);
 int		ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft);
+
+/*
+** Printf Utils 2
+*/
+int	ft_wrong_order_of_flags(char *before_dot, char *after_dot);
 
 /*
 ** Libft functions

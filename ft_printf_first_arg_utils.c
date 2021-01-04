@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 17:55:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 18:15:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,22 @@ static t_list	*ft_flags_to_list(char *str_percent)
 
 	if (!str_percent || !(list = ft_lstnew()))
 		return (0);
-	list->before_point = ft_extract_str(str_percent, ".");
-	list->after_point = 0;
+	list->before_dot = ft_extract_str(str_percent, ".");
+	list->after_dot = 0;
 	if ((point = ft_strchr(str_percent, '.')) != 0)
 	{
 		list->point_flag = point;
-		list->after_point = ft_extract_str(point + 1, "");
+		list->after_dot = ft_extract_str(point + 1, "");
 	}
-	if (list->after_point)
+	if (list->after_dot)
 	{
-		list->star_after_point = ft_strchr(list->after_point, '*');
-		list->precision_flag = ft_atoi_p(list->after_point);
+		list->star_after_point = ft_strchr(list->after_dot, '*');
+		list->precision_flag = ft_atoi_p(list->after_dot);
 	}
-	list->minus_flag = ft_strchr(list->before_point, '-');
-	list->star_before_point = ft_strchr(list->before_point, '*');
-	list->width_flag = ft_atoi_p(list->before_point);
-	list->zero_flag = ft_zero_before_n_in_str(list->before_point);
+	list->minus_flag = ft_strchr(list->before_dot, '-');
+	list->star_before_point = ft_strchr(list->before_dot, '*');
+	list->width_flag = ft_atoi_p(list->before_dot);
+	list->zero_flag = ft_zero_before_n_in_str(list->before_dot);
 	list->type_flag = str_percent[ft_strlen(str_percent) - 1];
 	printf("list->type_flag: %c\n", list->type_flag);
 	return (list);
