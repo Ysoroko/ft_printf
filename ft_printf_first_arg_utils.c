@@ -6,11 +6,32 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 15:46:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 17:55:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+/*
+** This function is used to find whether there is a digit char in the string
+** And if yes, whether it starts with 0. This helps us to find the '0' flag.
+** If it starts with 0, returns 1
+** Returns 0 otherwise
+*/
+
+static int		ft_zero_before_n_in_str(char *str)
+{
+	int i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (!ft_isdigit(str[i]) && str[i])
+		i++;
+	if (str[i] == '0')
+		return (1);
+	return (0);
+}
 
 /*
 ** This function is a modified strdup. Given the address of the '%' char
@@ -107,7 +128,7 @@ t_list			*ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 		//change i position after we extract processing the t_list
 		if (s[i] == '%')
 		{
-			if (!(temp = ft_extract_str(&(s[i + 1]), "cspdiuxX%")))
+			if (!(temp = ft_extract_str(&(s[i + 1]), TYPE_CHARS)))
 			{
 				printf("temp from ft_extract str is null\n");
 				return (0);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:25:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 16:39:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 16:42:03 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,30 @@ char	*ft_char_alloc(int n_chars, char c)
 }
 
 /*
+** FT_STR_HAS_CHAR_FROM_CHARSET
+** Works like ft_strchr, but instead of looking for a specific char in "str",
+** Looks for any char from "charset" argument string in "str"
+** Returns 1 if str has any char present in charset, 0 otherwise
+*/
+
+int		ft_str_has_char_from_charset(char *str, char *charset)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	if (!str || !charset)
+		return (0);
+	while (str[++i])
+	{
+		if (ft_strchr(charset, str[i]))
+			return (1);
+	}
+	return (0);
+}
+
+/*
 ** FT_STR_HAS_CHARS_OTHERS_THAN_CHARSET
 ** Works like ft_strchr, but instead of looking for a specific char in "str",
 ** Looks for any chars different from "charset" chars in "str" argument
@@ -56,27 +80,6 @@ int		ft_str_has_other_chars(char *str, char *charset)
 		if (!(ft_strchr(charset, str[i])))
 			return (1);
 	}
-	return (0);
-}
-
-/*
-** This function is used to find whether there is a digit char in the string
-** And if yes, whether it starts with 0. This helps us to find the '0' flag.
-** If it starts with 0, returns 1
-** Returns 0 otherwise
-*/
-
-int				ft_zero_before_n_in_str(char *str)
-{
-	int i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (!ft_isdigit(str[i]) && str[i])
-		i++;
-	if (str[i] == '0')
-		return (1);
 	return (0);
 }
 

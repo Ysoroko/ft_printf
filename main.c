@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 16:14:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/04 17:41:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main()
 
 	//"0" FLAG
 	//printf("08s + test: %08s\n", "test");
-	printf("%20.0015d", 15);
+	printf("%.0d8", 0);
 	return (0);
 }
 
@@ -78,6 +78,7 @@ int main()
 **					1) The precision sort of "callocs" a string with "precision" number of '0'. It then writes inside the number
 **					2) The width sort of "mallocs" a string with "width" number of spaces in it.It then writes the string from 1) inside
 **				- If there is a '.', but no number afterwards --> no effect
+**				- If a precision of 0 is used with a '0' in diUxX -> prints nothing
 **					
 **					
 **
@@ -86,7 +87,7 @@ int main()
 **				- If the width is less than the necessary spaces to print the number - ignored
 **				- Undefined behaviour with "%s", "%c" and "%p" type specifiers
 **				- Multiple "0" --> no problem
-**				- '0' after the point -> ignored
+**				- '0' after the point -> ignored only when there is no '*', otherwise --> error
 **
 ** "-":			Instead of formatting the output string to the right, does it to the left
 **				- Example: "printf("%-4s\n", "ha"); --> "ha  "
@@ -101,6 +102,7 @@ int main()
 **				- Example: "printf("%*.*s", 8, 3, "haha") ---> "     hah" (Width = 8, Precision = 3)
 **				- Multiple "*" before/after '.' --> error
 **				- Both "*" and the width/precision int are present --> error
+**				- '0' or '-' cannot be after '*' --> error
 */
 
 
