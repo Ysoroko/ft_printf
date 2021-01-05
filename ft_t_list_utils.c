@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:27:24 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/02 15:39:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 11:58:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_list	*ft_lstnew(void)
 	if (!(pnt = malloc(sizeof(t_list))))
 		return (0);
 	pnt->definer_str = 0;
-	pnt->before_point = 0;
-	pnt->after_point = 0;
+	pnt->before_dot = 0;
+	pnt->after_dot = 0;
 	pnt->minus_flag = 0;
 	pnt->star_before_point = 0;
 	pnt->zero_flag = 0;
@@ -38,6 +38,5 @@ t_list	*ft_lstnew(void)
 	pnt->star_after_point = 0;
 	pnt->type_flag = 0;
 	pnt->text_to_print = 0;
-	pnt->error = 0;
 	return (pnt);
 }

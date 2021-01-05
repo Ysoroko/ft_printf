@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 18:13:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 11:59:31 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct	s_str_with_flags_list
 	char							*star_after_point;
 	char							type_flag;
 	char							*text_to_print;
-	char							*error;
 }				t_list;
 
 # define FD 1
@@ -49,6 +48,7 @@ t_list	*ft_analyze_first_printf_argument(const char *str, va_list *v_list);
 ** Functions used for processing the components in t_list (= flags data)
 */
 int		ft_process_list(t_list *list, va_list *v_list);
+int		ft_atoi_p(const char *str);
 
 /*
 ** Functions used in manipulations of t_lists (creating, reading etc.)
@@ -74,9 +74,11 @@ int	ft_wrong_order_of_flags(char *before_dot, char *after_dot);
 */
 int		ft_isdigit(int c);
 char	*ft_strchr(const char *str, int c);
-int		ft_atoi_p(const char *str);
 size_t	ft_strlen(const char *str);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
+
+//TO DELETE
+void	ft_print_t_list(t_list *list);
 
 #endif

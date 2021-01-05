@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/04 18:15:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 12:00:12 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,19 @@ static char		*ft_extract_str(const char *start, const char *charset)
 	if (!start || !charset)
 		return (0);
 	i = 0;
-	while (!(ft_strchr(charset, start[i])) && start[i])
+	while (start[i] && !(ft_strchr(charset, start[i])))
 		i++;
-	if (ft_strchr(charset, start[i]) && start[i] != 0)
+	if (start[i] && ft_strchr(charset, start[i]))
 		i++;
 	if (!(ret = malloc(sizeof(*ret) * (i + 1))))
 		return (0);
 	i = 0;
-	while (!(ft_strchr(charset, start[i])) && start[i])
+	while (start[i] && !(ft_strchr(charset, start[i])))
 	{
 		ret[i] = start[i];
 		i++;
 	}
-	if (ft_strchr(charset, start[i]) && start[i] != 0)
+	if (start[i] && ft_strchr(charset, start[i]))
 	{
 		ret[i] = start[i];
 		i++;
@@ -84,6 +84,7 @@ static t_list	*ft_flags_to_list(char *str_percent)
 
 	if (!str_percent || !(list = ft_lstnew()))
 		return (0);
+	list->definer_str = str_percent;
 	list->before_dot = ft_extract_str(str_percent, ".");
 	list->after_dot = 0;
 	if ((point = ft_strchr(str_percent, '.')) != 0)
@@ -101,7 +102,6 @@ static t_list	*ft_flags_to_list(char *str_percent)
 	list->width_flag = ft_atoi_p(list->before_dot);
 	list->zero_flag = ft_zero_before_n_in_str(list->before_dot);
 	list->type_flag = str_percent[ft_strlen(str_percent) - 1];
-	printf("list->type_flag: %c\n", list->type_flag);
 	return (list);
 }
 
@@ -123,7 +123,7 @@ t_list			*ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 		printf("s = 0 or v_l = 0");
 		return (0);
 	}
-	while (s[++i] != 0)
+	while (s[++i])
 	{
 		//change i position after we extract processing the t_list
 		if (s[i] == '%')
@@ -139,12 +139,13 @@ t_list			*ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 				printf("list from ft_flags to list is null\n");
 				return (0);
 			}
-			list->definer_str = temp;
-			if (!(ft_process_list(list, v_l)))
+			ft_print_t_list(list);
+			if (!(i += (ft_process_list(list, v_l))))
 			{
 				printf("couldn't ft_process list\n");
 				return (0);
 			}
+			printf("I after ft_process_list: %d", i);
 			free(temp);
 		}
 		ft_putchar_fd(s[i], FD);
