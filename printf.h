@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 11:59:31 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 14:40:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct	s_str_with_flags_list
 	char							*star_before_point;
 	int								zero_flag;
 	char							*point_flag;
-	int								precision_flag;
-	int								width_flag;
+	int								precision;
+	int								width;
 	char							*star_after_point;
 	char							type_flag;
 	char							*text_to_print;

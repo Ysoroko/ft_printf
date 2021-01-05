@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 14:15:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 14:41:05 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ static t_list	*ft_flags_to_list(char *str_percent)
 	if (list->after_dot)
 	{
 		list->star_after_point = ft_strchr(list->after_dot, '*');
-		list->precision_flag = ft_atoi_p(list->after_dot);
+		list->precision = ft_atoi_p(list->after_dot);
 	}
 	list->minus_flag = ft_strchr(list->before_dot, '-');
 	list->star_before_point = ft_strchr(list->before_dot, '*');
-	list->width_flag = ft_atoi_p(list->before_dot);
+	list->width = ft_atoi_p(list->before_dot);
 	list->zero_flag = ft_zero_before_n_in_str(list->before_dot);
 	list->type_flag = str_percent[ft_strlen(str_percent) - 1];
 	return (list);

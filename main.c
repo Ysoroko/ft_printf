@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 14:11:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 14:58:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
 
 	//"0" FLAG
 	//printf("08s + test: %08s\n", "test");
-	ft_printf("Hello %s\n", "You");
+	printf("Hello %-*s\n", -20, "You");
 	return (0);
 }
 
@@ -66,6 +66,7 @@ int main()
 **				- If the width is too little to print the string, it's ignored ("Ex: printf("%2s\n", "haha"); --> "haha")
 **				- Works with all the formats "cspdiuxX% "
 **				- Several widths separated by other flags --> error
+**				- Format = Unsigned int
 **
 **
 ** "Precision":	Specifies the precision for the numbers (= number after '.' if it's present)
@@ -80,6 +81,7 @@ int main()
 **					2) The width sort of "mallocs" a string with "width" number of spaces in it.It then writes the string from 1) inside
 **				- If there is a '.', but no number afterwards --> no effect
 **				- If a precision of 0 is used with a '0' in diUxX -> prints nothing
+**				- FORMAT = UNSIGNED INT
 **					
 **					
 **
@@ -116,8 +118,8 @@ void	ft_print_t_list(t_list *list)
 	printf("Star before point: %s\n", list->star_before_point);
 	printf("Zero flag: %d\n", list->zero_flag);
 	printf("Point flag: %s\n", list->point_flag);
-	printf("Width: %d\n", list->width_flag);
-	printf("Precision: %d\n", list->precision_flag);
+	printf("Width: %d\n", list->width);
+	printf("Precision: %d\n", list->precision);
 	printf("Star after point: %s\n", list->star_after_point);
 	printf("Type flag: %c\n\n", list->type_flag);
 }

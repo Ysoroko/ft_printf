@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:27:24 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 11:58:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 14:41:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_list	*ft_lstnew(void)
 	pnt->star_before_point = 0;
 	pnt->zero_flag = 0;
 	pnt->point_flag = 0;
-	pnt->precision_flag = 0;
-	pnt->width_flag = 0;
+	pnt->precision = 0;
+	pnt->width = 0;
 	pnt->star_after_point = 0;
 	pnt->type_flag = 0;
 	pnt->text_to_print = 0;
