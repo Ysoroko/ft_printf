@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 12:43:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/05 14:11:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
 
 	//"0" FLAG
 	//printf("08s + test: %08s\n", "test");
-	printf("%----0-s\n", "You");
+	ft_printf("Hello %s\n", "You");
 	return (0);
 }
 
@@ -108,7 +108,7 @@ int main()
 
 void	ft_print_t_list(t_list *list)
 {
-	printf("/nCONTENTS OF T_LIST/n/n");
+	printf("\nCONTENTS OF T_LIST\n\n");
 	printf("DEFINER_STR: %s\n\n", list->definer_str);
 	printf("Before dot: %s\n", list->before_dot);
 	printf("After dot: %s\n", list->after_dot);
@@ -119,5 +119,5 @@ void	ft_print_t_list(t_list *list)
 	printf("Width: %d\n", list->width_flag);
 	printf("Precision: %d\n", list->precision_flag);
 	printf("Star after point: %s\n", list->star_after_point);
-	printf("Type flag: %c\n", list->type_flag);
+	printf("Type flag: %c\n\n", list->type_flag);
 }
