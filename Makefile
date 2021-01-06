@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/06 12:06:53 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/06 14:13:01 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC				=	ft_printf.c \
 					./libft_utils/ft_libft_utils.c \
 					./libft_utils/ft_strdup.c \
 					./libft_utils/ft_strjoin.c \
+					./libft_utils/ft_uitoa_base.c \
 					\
 					./next_arg_to_str_functions/ft_csp_percent_flags.c \
 					./next_arg_to_str_functions/ft_diux_flags.c \
@@ -44,6 +45,7 @@ OBJS			=	ft_printf.o \
 					ft_libft_utils.o \
 					ft_strdup.o \
 					ft_strjoin.o \
+					ft_uitoa_base.o \
 					\
 					ft_csp_percent_flags.o \
 					ft_diux_flags.o \
@@ -79,6 +81,6 @@ aclean:		fclean
 re:			fclean all
 
 run:		
-			@ $(CC) $(CFLAGS) -I includes $(SRCS) main.c && ./a.out
+			@ $(CC) $(CFLAGS) -I includes $(SRC) main.c && ./a.out
 
 .PHONY:		all clean fclean re bonus run

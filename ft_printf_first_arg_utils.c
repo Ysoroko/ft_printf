@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 14:41:05 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 12:25:11 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,13 +138,12 @@ t_list			*ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 				printf("list from ft_flags to list is null\n");
 				return (0);
 			}
-			//ft_print_t_list(list);
 			if (!(i += (ft_process_list(list, v_l))))
 			{
 				printf("couldn't ft_process list\n");
 				return (0);
 			}
-			printf("I after ft_process_list: %d", i);
+			//printf("I after ft_process_list: %d", i);
 			free(temp);
 		}
 		ft_putchar_fd(s[i], FD);

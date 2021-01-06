@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:25:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 16:45:22 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 12:45:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 ** Malloc's the required space for a string to be printed by printf
 ** Is like "calloc", but instead of filling the string with zeroes it fills it
 ** with the char provided in the argument
+** Note: N_CHARS shouldn't include space for '\0' (strlen can be used for it)
 **
 ** Returns the pointer to the newly allocated string, NULL if malloc fails
 */
@@ -26,12 +27,12 @@ char	*ft_char_alloc(int n_chars, char c)
 	char	*ret_str;
 	int		i;
 
-	if (!(ret_str = malloc(sizeof(*ret_str) * n_chars + 1)))
+	if (!(ret_str = malloc(sizeof(*ret_str) * (n_chars + 1))))
 		return (0);
 	i = -1;
-	ret_str[n_chars] = 0;
-	while (ret_str[++i])
+	while (++i < n_chars)
 		ret_str[i] = c;
+	ret_str[n_chars] = 0;
 	return (ret_str);
 }
 
@@ -64,7 +65,7 @@ int		ft_str_has_other_chars(char *str, char *charset)
 ** Returns the number of occurences of c char argument in str string argument
 */
 
-int				ft_number_of_c_char_in_str(char *str, char c)
+int		ft_number_of_c_char_in_str(char *str, char c)
 {
 	int i;
 	int count;

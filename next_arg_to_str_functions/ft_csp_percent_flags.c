@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 12:06:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 12:36:51 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_c_type_next_arg_to_str(va_list *v_l)
 	char *arg_as_str;
 
 	arg_as_str = 0;
-	if (!(arg_as_str = ft_char_alloc(sizeof(char) * 2, '0')))
+	if (!(arg_as_str = ft_char_alloc(1, '0')))
 		return (0);
 	arg_as_str[0] = (char)va_arg(*v_l, unsigned int);
 	return (arg_as_str);
@@ -39,7 +39,7 @@ char	*ft_percent_type_next_arg_to_str(void)
 	char *arg_as_str;
 
 	arg_as_str = 0;
-	if (!(arg_as_str = ft_char_alloc(sizeof(char) * 2, '%')))
+	if (!(arg_as_str = ft_char_alloc(1, '%')))
 		return (0);
 	return (arg_as_str);
 }

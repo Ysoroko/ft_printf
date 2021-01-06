@@ -6,11 +6,10 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 11:43:14 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 14:38:49 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "printf.h"
 
 /* 
@@ -25,15 +24,11 @@ int main()
 	char	*str = "First";
 	//int		n = 14;
 
-	//STRING
-	//printf("%-0s", "oops");
-
-	//INT
-	//ft_printf("Lol%s\n", "Hello there\n");
-
-	//"0" FLAG
-	//printf("08s + test: %08s\n", "test");
-	printf("Hello %-20p\n", str);
+	
+	ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 19, 19, -19, -19, 19);
+	printf("%x\n", -19);
+	//printf("%u\n", -19);
+	//ft_printf("%u\n", -19);
 	return (0);
 }
 

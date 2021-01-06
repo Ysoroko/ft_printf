@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:44:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 14:37:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 14:38:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,23 @@
 
 static void			ft_putnbr_base(unsigned int nbr, char *str, char *b, int i)
 {
-	unsigned int n;
-
-	n = nbr;
-	if (n >= ft_strlen(b))
+	if (nbr >= ft_strlen(b))
 	{
-		ft_putnbr_base(n / ft_strlen(b), str, b, i + 1);
-		ft_putnbr_base(n % ft_strlen(b), str, b, i);
+		ft_putnbr_base(nbr / ft_strlen(b), str, b, i + 1);
+		ft_putnbr_base(nbr % ft_strlen(b), str, b, i);
 	}
 	else
 	{
-		str[i] = b[n];
+		str[i] = b[nbr];
 	}
 }
 
-static int			ft_count_mem(int m, size_t base_len)
+static int			ft_count_mem(unsigned int m, size_t base_len)
 {
 	int mem_length;
 
 	mem_length = 0;
-	if (m < 0)
-		mem_length++;
-	else if (m == 0)
+	if (m == 0)
 		return (1);
 	while (m % base_len != 0 || m / base_len != 0)
 	{
@@ -66,32 +61,24 @@ static char			*rev_str(char *str, int i)
 	return (str);
 }
 
-char				*ft_itoa_base(int n, char *base)
+char				*ft_uitoa_base(unsigned int n, char *base)
 {
-	unsigned int	m;
-	size_t			base_len;
 	int				mem_length;
+	size_t			base_len;
 	int				i;
 	char			*str;
 
-	m = n;
 	i = 0;
 	base_len = ft_strlen(base);
 	mem_length = ft_count_mem(n, base_len);
 	if (!(str = malloc(sizeof(char) * (mem_length + 1))))
 		return (0);
-	if (n < 0)
-	{
-		str[0] = '-';
-		m *= -1;
-		i++;
-	}
 	str[mem_length] = '\0';
 	if (n == 0)
 	{
 		str[0] = '0';
 		return (str);
 	}
-	ft_putnbr_base(m, str, base, i);
+	ft_putnbr_base(n, str, base, i);
 	return (rev_str(str, i));
 }
