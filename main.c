@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 14:58:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 11:43:14 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int main()
 {
-	//char	*str = "First";
+	char	*str = "First";
 	//int		n = 14;
 
 	//STRING
@@ -33,7 +33,7 @@ int main()
 
 	//"0" FLAG
 	//printf("08s + test: %08s\n", "test");
-	printf("Hello %-*s\n", -20, "You");
+	printf("Hello %-20p\n", str);
 	return (0);
 }
 
@@ -43,7 +43,6 @@ int main()
 ** PRINTF ARGUMENTS STRUCTURE
 ** %[flags][width][.precision][length]specifier
 */
-
 
 /*
 ** TYPE SPECIFIERS:

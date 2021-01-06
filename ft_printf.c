@@ -22,7 +22,7 @@ int			ft_printf(const char *str, ...)
 	va_list	v_list;
 
 	if (str == 0)
-		return (0);
+		return (-1);
 	va_start(v_list, str);
 
 	ft_analyze_first_printf_argument(str, &v_list);

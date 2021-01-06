@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 18:24:30 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 11:59:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,28 @@
 
 typedef struct	s_str_with_flags_list
 {
-	char							*definer_str;
+	char	*definer_str;
 	//Malloc'd: before_point + after_point;
-	char							*before_dot;
-	char							*after_dot;
+	char	*before_dot;
+	char	*after_dot;
 	
-	char							*minus_flag;
-	char							*star_before_point;
-	int								zero_flag;
-	char							*point_flag;
-	int								precision;
-	int								width;
-	char							*star_after_point;
-	char							type_flag;
-	char							*text_to_print;
+	char	*minus_flag;
+	char	*star_before_point;
+	int		zero_flag;
+	char	*point_flag;
+	int		precision;
+	int		width;
+	char	*star_after_point;
+	char	type_flag;
+	char	*text_to_print;
 }				t_list;
 
 # define FD 1
 # define TYPE_CHARS "cspdiuxX%"
 # define ACCEPTED_CHARS "0123456789cspdiuxX%.-*"
 # define BASE_10 "0123456789"
-# define BASE_x "0123456789abcdef"
-# define BASE_X "0123456789ABCDEF"
+# define BASE_LX "0123456789abcdef"
+# define BASE_UX "0123456789ABCDEF"
 
 int		ft_printf(const char *str, ...);
 
@@ -71,6 +71,7 @@ void	ft_putchar_fd(char c, int fd);
 
 char	*ft_itoa_base(int n, char *base);
 char	*ft_strdup(const char *src);
+char	*ft_strjoin(char const *pref, char const *suff);
 
 /*
 ** Next Arg To Str Functions

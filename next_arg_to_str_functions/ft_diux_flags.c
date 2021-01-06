@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 17:09:35 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 18:26:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 11:59:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_lowercase_x_type_next_arg_to_str(va_list *v_l)
 	char *arg_as_str;
 
 	arg_as_str = 0;
-	if (!(arg_as_str = ft_itoa_base(va_arg(*v_l, unsigned int), BASE_x)))
+	if (!(arg_as_str = ft_itoa_base(va_arg(*v_l, unsigned int), BASE_LX)))
 		return (0);
 	return (arg_as_str);
 }
@@ -58,7 +58,7 @@ char	*ft_uppercase_x_type_next_arg_to_str(va_list *v_l)
 	char *arg_as_str;
 
 	arg_as_str = 0;
-	if (!(arg_as_str = ft_itoa_base(va_arg(*v_l, unsigned int), BASE_X)))
+	if (!(arg_as_str = ft_itoa_base(va_arg(*v_l, unsigned int), BASE_UX)))
 		return (0);
 	return (arg_as_str);
 }

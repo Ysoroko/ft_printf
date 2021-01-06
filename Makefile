@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/05 18:32:52 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/06 12:06:53 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC				=	ft_printf.c \
 					./libft_utils/ft_itoa_base.c \
 					./libft_utils/ft_libft_utils.c \
 					./libft_utils/ft_strdup.c \
+					./libft_utils/ft_strjoin.c \
 					\
 					./next_arg_to_str_functions/ft_csp_percent_flags.c \
 					./next_arg_to_str_functions/ft_diux_flags.c \
@@ -42,6 +43,7 @@ OBJS			=	ft_printf.o \
 					ft_itoa_base.o \
 					ft_libft_utils.o \
 					ft_strdup.o \
+					ft_strjoin.o \
 					\
 					ft_csp_percent_flags.o \
 					ft_diux_flags.o \
@@ -54,8 +56,8 @@ NAME			=	libftprintf.a
 LINK			=	ar rc
 
 
-.c.o:
-			${CC} ${CFLAGS} -I includes -c $(SRC) $< ${<:.c=.o}
+.c.o:		
+			@ ${CC} ${CFLAGS} -I includes -c $(SRC) $< ${<:.c=.o}
 
 all: 		$(NAME)
 

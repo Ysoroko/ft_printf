@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:18:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/05 15:56:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 12:01:14 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	*ft_strchr(const char *str, int c)
 	int		i;
 	char	*my_str;
 
+	if (!str)
+		return (0);
 	my_str = (char *)(str);
 	i = -1;
 	while (my_str[++i] != '\0')
