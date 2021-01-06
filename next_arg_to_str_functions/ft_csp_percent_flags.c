@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 12:36:51 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 15:29:09 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_p_type_next_arg_to_str(va_list *v_l)
 
 	arg_as_str = 0;
 	temp = 0;
-	if (!(temp = ft_itoa_base(va_arg(*v_l, unsigned int), BASE_10)))
+	if (!(temp = ft_itoa(va_arg(*v_l, unsigned int))))
 		return (0);
 	if (!(arg_as_str = ft_strjoin("0x", temp)))
 		return (0);

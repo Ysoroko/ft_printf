@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 14:10:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 15:28:17 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ size_t	ft_strlen(const char *str);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 
-char	*ft_itoa_base(int n, char *base);
+char	*ft_itoa(int n);
 char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *pref, char const *suff);
 char	*ft_uitoa_base(unsigned int n, char *base);

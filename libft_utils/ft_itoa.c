@@ -6,29 +6,29 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:44:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 14:37:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 15:25:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void			ft_putnbr_base(unsigned int nbr, char *str, char *b, int i)
+static void			ft_putnbr_base(unsigned int nbr, char *str, int i)
 {
 	unsigned int n;
 
 	n = nbr;
-	if (n >= ft_strlen(b))
+	if (n >= 10)
 	{
-		ft_putnbr_base(n / ft_strlen(b), str, b, i + 1);
-		ft_putnbr_base(n % ft_strlen(b), str, b, i);
+		ft_putnbr_base(n / 10, str, i + 1);
+		ft_putnbr_base(n % 10, str, i);
 	}
 	else
 	{
-		str[i] = b[n];
+		str[i] = '0' + n;
 	}
 }
 
-static int			ft_count_mem(int m, size_t base_len)
+static int			ft_count_mem(int m)
 {
 	int mem_length;
 
@@ -37,9 +37,9 @@ static int			ft_count_mem(int m, size_t base_len)
 		mem_length++;
 	else if (m == 0)
 		return (1);
-	while (m % base_len != 0 || m / base_len != 0)
+	while (m % 10 != 0 || m / 10 != 0)
 	{
-		m = m / base_len;
+		m = m / 10;
 		mem_length++;
 	}
 	return (mem_length);
@@ -66,18 +66,16 @@ static char			*rev_str(char *str, int i)
 	return (str);
 }
 
-char				*ft_itoa_base(int n, char *base)
+char				*ft_itoa(int n)
 {
 	unsigned int	m;
-	size_t			base_len;
 	int				mem_length;
 	int				i;
 	char			*str;
 
 	m = n;
 	i = 0;
-	base_len = ft_strlen(base);
-	mem_length = ft_count_mem(n, base_len);
+	mem_length = ft_count_mem(n);
 	if (!(str = malloc(sizeof(char) * (mem_length + 1))))
 		return (0);
 	if (n < 0)
@@ -92,6 +90,6 @@ char				*ft_itoa_base(int n, char *base)
 		str[0] = '0';
 		return (str);
 	}
-	ft_putnbr_base(m, str, base, i);
+	ft_putnbr_base(m, str, i);
 	return (rev_str(str, i));
 }

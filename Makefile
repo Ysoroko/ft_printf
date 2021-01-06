@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/06 14:13:01 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/06 15:29:59 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC				=	ft_printf.c \
 					\
 					./error_checking_functions/ft_printf_errors.c \
 					\
-					./libft_utils/ft_itoa_base.c \
+					./libft_utils/ft_itoa.c \
 					./libft_utils/ft_libft_utils.c \
 					./libft_utils/ft_strdup.c \
 					./libft_utils/ft_strjoin.c \
@@ -41,7 +41,7 @@ OBJS			=	ft_printf.o \
 					\
 					ft_printf_errors.o \
 					\
-					ft_itoa_base.o \
+					ft_itoa.o \
 					ft_libft_utils.o \
 					ft_strdup.o \
 					ft_strjoin.o \

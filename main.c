@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 14:38:49 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/06 15:24:59 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,18 @@ int main()
 	//int		n = 14;
 
 	
-	ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 19, 19, -19, -19, 19);
-	printf("%x\n", -19);
+	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
+	ft_printf("String First: %s\n", str);
+	ft_printf("Char c: %c\n",'c');
+	ft_printf("Percent: %%\n");
+	ft_printf("Int d 400000: %d\n", 400000);
+	ft_printf("Int i -400000: %i\n", -400000);
+	ft_printf("Unsigned Int 400000: %u\n", 400000);
+	ft_printf("Unsigned Int -400000: %u\n", -400000);
+	ft_printf("Hexadecimal x 400000: %x\n", 400000);
+	ft_printf("Hexadecimal X -400000: %x\n", -400000);
+
+
 	//printf("%u\n", -19);
 	//ft_printf("%u\n", -19);
 	return (0);
@@ -67,6 +77,9 @@ int main()
 **				- Undefined behaviour with: "%cp"
 **				- With "%s" string format specifier, sets the number of chars from the string that will be printed
 				  (Ex: printf("%4.2s\n", "ahah") --> "  ah")
+				  if precision is bigger than the needed string->only prints the string(all the chars)
+				  if precision is less than the needed string -> prints only [precision] chars from the string
+				  if precision is '0' -> prints an empty string ""
 **				- With "%diUxX" format specifiers, it sets the number of chars in the output string
 **				  Unlike with "%s", it will always print at least the number itself, even if the precision is too little
 **				  If the precision is bigger than the space needed to print the number, it will fill the rest of it (left) with '0'.
