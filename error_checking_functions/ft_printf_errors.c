@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:52:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 10:29:02 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 15:09:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,55 +29,6 @@ int	ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft)
 	{
 		if (ft_number_of_c_char_in_str(aft, '*') > 1)
 			return (1);
-	}
-	return (0);
-}
-
-/*
-** FT_WRONG_ORDER_OF_FLAGS
-** Checks if before the '.' the order |[%]["0*-" flags][width][.]| is respected
-** Then, if there is a '.' and after_dot exists, checks the part after the '.'
-** to see if the order ["0*" flags][precision][type definer char] is respected
-*/
-
-int	ft_wrong_order_of_flags(char *before_dot, char *after_dot)
-{
-	int	i;
-
-	i = ft_strlen(before_dot) - 1;
-	if (i != '.' && !ft_strchr(TYPE_CHARS, before_dot[i]))
-		return (2);
-	if (i)
-	{
-		if (!ft_isdigit(before_dot[--i]) && !(ft_strchr("-0*", before_dot[i])))
-			return (3);
-		while (i && ft_isdigit(before_dot[i]))
-			i--;
-		if (!ft_strchr("0*-.", before_dot[i]))
-			return (4);
-		while (i && ft_strchr("0*-.", before_dot[i]))
-			i--;
-		if (i)
-			return (5);
-	}
-	if (after_dot)
-	{
-		i = ft_strlen(after_dot);
-		if (!(ft_strchr(TYPE_CHARS, after_dot[--i])))
-			return (6);
-		if (i)
-		{
-			if (!ft_isdigit(before_dot[--i]) && !ft_strchr("0*", after_dot[i]))
-				return (7);
-			while (i && ft_isdigit(after_dot[i]))
-				i--;
-			if (!ft_strchr("0*", after_dot[i]))
-				return (8);
-			while (i && ft_strchr("0*", before_dot[i]))
-				i--;
-			if (i)
-				return (9);
-		}
 	}
 	return (0);
 }
@@ -119,8 +70,8 @@ int	ft_check_for_errors(t_list *list, va_list *v_list)
 			list->before_dot, list->after_dot))
 		return (6);
 	//printf("6) Too many '.' ot '*' flags done \n\n");
-	if (ft_wrong_order_of_flags(list->before_dot, list->after_dot))
-		return (7);
+	//if (printf("Wrong order Error: %d\n", ft_wrong_order_of_flags(list->before_dot, list->after_dot)))
+	//	return (7);
 	//printf("7) Wrong order of accepted chars done \n\n");
 	if (list->width && list->star_before_point)
 		return (8);

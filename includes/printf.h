@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 13:22:22 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 14:47:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char	*ft_process_minus_flag(char *str_rec, char *str_to_insert, t_list *list);
 char	*ft_width_and_zero_to_str(t_list *list);
 char	*ft_precision_to_str(char *str_to_format, t_list *list);
 char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list);
+char	*ft_width_prec_zero_minus(char *str, t_list *list);
 
 /*
 ** Printf Utils

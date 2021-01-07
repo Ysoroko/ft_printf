@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 13:17:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 15:31:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,20 @@ int		ft_process_list(t_list *list, va_list *v_list)
 
 	//ft_print_t_list(list);
 	if (ft_check_for_errors(list, v_list))
+	{
+		printf ("Error found in t_list\n");
 		return (0);
+	}
 	if (list->star_before_point)
 		list->width = va_arg(*v_list, unsigned int);
 	if (list->star_after_point)
 		list->precision = va_arg(*v_list, unsigned int);
-	str_to_print = ft_next_arg_to_str(v_list, list);
+	if (!(str_to_print = ft_next_arg_to_str(v_list, list)))
+		return (0);
+	list->text_to_print = str_to_print;
+	//printf("S before w/p/0/-: %s\n", str_to_print);
+	str_to_print = ft_width_prec_zero_minus(str_to_print, list);
+	//printf("S: %s\n", str_to_print);
 	ft_putstr_fd(str_to_print, FD);
 	//Should return the length of %string, to increment string in the ft_printf function
 	return (ft_strlen(list->definer_str) + 1);

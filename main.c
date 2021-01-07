@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 13:42:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 16:11:33 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ int main()
 	//Example with a lot of args
 	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
 
-
-	printf("%-.20d\n", 34);
-	printf("%1.20d\n", 34);
+	ft_printf("Res: %.20s\n", "HELLO");
+	printf("Res: %.20s\n", "HELLO");
 	//printf("%02d\n", 1);
 
 	/*
@@ -125,7 +124,6 @@ int main()
 **				- Works with all the type specifiers: "cspdiuxX%"
 **				- "-" after the "." --> error
 **				- Multiple "-" before the "." --> no problem
-**				- If presicion is present - '-' is ignored
 **
 ** "*":			Instead of the number explicitly written in first printf argument, the width or precision
 **				(depending on whether '*' is before orafter the '.' flag will be instead taken from the next printf argument)
