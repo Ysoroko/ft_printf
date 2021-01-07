@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 16:11:19 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 18:01:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char	*ft_process_minus_flag(char *width_str, char *prec_str, t_list *list)
 	int		j;
 	char	*str;
 
-	if (!width_str || (list->precision >= ft_strlen(width_str)))
+	if (!width_str || (list->precision && list->width
+		&& (list->precision >= list->width)))
 		return (prec_str);
 	str = list->text_to_print;
 	if (!prec_str)
@@ -49,7 +50,7 @@ char	*ft_process_minus_flag(char *width_str, char *prec_str, t_list *list)
 		while (--i > -1 && --j > -1)
 			width_str[j] = prec_str[i];
 	}
-	return (width_str);
+	return (ft_strdup(width_str));
 }
 
 /*
@@ -87,12 +88,13 @@ char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
 	char	*ret_str;
 	int		i;
 
+	if (list->precision >= ft_strlen(list->text_to_print))
+		return (str_to_format);
 	if (!(ret_str = ft_char_alloc(list->precision, ' ')))
 		return (0);
 	i = -1;
 	while (ret_str[++i] && str_to_format[i])
 		ret_str[i] = str_to_format[i];
-	printf("P to S result: %s\n", ret_str);
 	return (ret_str);
 }
 
@@ -110,6 +112,8 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 	int		i;
 	int		j;
 
+	if (list->precision <= ft_strlen(str_to_format))
+		return (str_to_format);
 	ret_str = 0;
 	if (!(ret_str = ft_char_alloc(list->precision, '0')))
 		return (0);
@@ -139,18 +143,23 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 			return (0);
 	}
 	//printf("W to S result: %s\n", width_str);
-	if (precision && list->type_flag == 's' && precision < ft_strlen(str))
+	if (list->type_flag == 's')
 	{
 		if (!(prec_str = ft_precision_s_type_to_str(str, list)))
+		{
+			ft_free(width_str, 0, 0);
 			return (0);
+		}
 	}
-	else if (precision && list->type_flag != 's' && precision > ft_strlen(str))
+	else if (list->type_flag != 's')
 		if (!(prec_str = ft_precision_to_str(str, list)))
+		{
+			ft_free(width_str, 0, 0);
 			return (0);
+		}
 	//printf("P to S result: %s\n", prec_str);
-	if (!(ret = ft_process_minus_flag(width_str, prec_str, list)))
-		return (0);
-	//printf("- to S result: %s\n", ret);
+	ret = ft_process_minus_flag(width_str, prec_str, list);
+	ft_free(width_str, prec_str, 0);
 	return (ret);
 }
 

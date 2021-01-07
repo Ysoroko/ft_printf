@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 14:47:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 18:03:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ int		ft_printf(const char *str, ...);
 /*
 ** Main Printf Functions
 */
+
 int		ft_process_list(t_list *list, va_list *v_list);
-t_list	*ft_analyze_first_printf_argument(const char *str, va_list *v_list);
+int		ft_analyze_first_printf_argument(const char *str, va_list *v_list);
 
 /*
 ** Error Checking Functions
 */
+
 int		ft_wrong_order_of_flags(char *before_dot, char *after_dot);
 int		ft_check_for_errors(t_list *list, va_list *v_list);
 int		ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft);
@@ -63,6 +65,7 @@ int		ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft);
 /*
 ** Libft Utils
 */
+
 int		ft_isdigit(int c);
 char	*ft_strchr(const char *str, int c);
 size_t	ft_strlen(const char *str);
@@ -100,11 +103,11 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list);
 */
 
 char	*ft_char_alloc(int n_chars, char c);
-int		ft_str_has_char_from_charset(char *str, char *charset);
 int		ft_str_has_other_chars(char *str, char *charset);
 int		ft_number_of_c_char_in_str(char *str, char c);
 int		ft_atoi_p(const char *str);
 t_list	*ft_lstnew(void);
+int		ft_free(char *ptr1, char *ptr2, t_list *list);
 
 
 

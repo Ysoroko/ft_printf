@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 16:11:33 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 18:07:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main()
 	//Example with a lot of args
 	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
 
-	ft_printf("Res: %.20s\n", "HELLO");
-	printf("Res: %.20s\n", "HELLO");
+	printf("RET1: %d\n", ft_printf("FP: %40.20d\n", 42));
+	printf("RET2: %d\n", printf("FP: %40.20d\n", 42));
 	//printf("%02d\n", 1);
 
 	/*

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:25:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 12:45:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 17:56:56 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,28 @@ t_list	*ft_lstnew(void)
 	pnt->type_flag = 0;
 	pnt->text_to_print = 0;
 	return (pnt);
+}
+
+/*
+** FT_FREE
+** Used for freeing any argument pointer and setting it to 0
+** Always returns 0
+*/
+
+int		ft_free(char *ptr1, char *ptr2, t_list *list)
+{
+	free(ptr1);
+	ptr1 = 0;
+	free(ptr2);
+	ptr2 = 0;
+	if (list)
+	{
+		free(list->before_dot);
+		list->before_dot = 0;
+		free(list->after_dot);
+		list->after_dot = 0;
+		free(list);
+		list = 0;
+	}
+	return (0);
 }

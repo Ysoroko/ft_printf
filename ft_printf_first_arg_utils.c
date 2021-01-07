@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 12:25:11 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 17:52:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,21 +111,19 @@ static t_list	*ft_flags_to_list(char *str_percent)
 ** next argument are stocked in a t_list data structure
 */
 
-t_list			*ft_analyze_first_printf_argument(const char *s, va_list *v_l)
+int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 {
 	int		i;
+	int		printed;
 	t_list	*list;
 	char	*temp;
 
 	i = -1;
-	if (s == 0 || v_l == 0)
-	{
-		printf("s = 0 or v_l = 0");
+	printed = 0;
+	if (v_l == 0)
 		return (0);
-	}
 	while (s[++i])
 	{
-		//change i position after we extract processing the t_list
 		if (s[i] == '%')
 		{
 			if (!(temp = ft_extract_str(&(s[i + 1]), TYPE_CHARS)))
@@ -136,17 +134,19 @@ t_list			*ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 			if (!(list = ft_flags_to_list(temp)))
 			{
 				printf("list from ft_flags to list is null\n");
-				return (0);
+				return (ft_free(temp, 0, 0));
 			}
 			if (!(i += (ft_process_list(list, v_l))))
 			{
 				printf("couldn't ft_process list\n");
-				return (0);
+				return (ft_free(temp, 0, list));
 			}
+			printed += ft_strlen(list->text_to_print);
 			//printf("I after ft_process_list: %d", i);
-			free(temp);
+			ft_free(temp, 0, list);
 		}
 		ft_putchar_fd(s[i], FD);
+		printed++;
 	}
-	return (list);
+	return (printed);
 }
