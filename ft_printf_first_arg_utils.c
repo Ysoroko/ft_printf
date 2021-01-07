@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 17:52:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 18:52:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,20 @@ static char		*ft_extract_str(const char *start, const char *charset)
 
 static t_list	*ft_flags_to_list(char *str_percent)
 {
-	char	*point;
 	t_list	*list;
 
-	if (!str_percent || !(list = ft_lstnew()))
+	if (!(list = ft_lstnew()))
 		return (0);
 	list->definer_str = str_percent;
-	list->before_dot = ft_extract_str(str_percent, ".");
-	list->after_dot = 0;
-	if ((point = ft_strchr(str_percent, '.')) != 0)
+	if (!(list->before_dot = ft_extract_str(str_percent, ".")))
+		return (0);
+	if ((list->point_flag = ft_strchr(str_percent, '.')) != 0)
 	{
-		list->point_flag = point;
-		list->after_dot = ft_extract_str(point + 1, "");
+		if (!(list->after_dot = ft_extract_str(list->point_flag + 1, "")))
+		{
+			ft_free(list->before_dot, 0, 0);
+			return (0);
+		}
 	}
 	if (list->after_dot)
 	{
@@ -115,6 +117,7 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 {
 	int		i;
 	int		printed;
+	int		list_ret;
 	t_list	*list;
 	char	*temp;
 
@@ -136,11 +139,12 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 				printf("list from ft_flags to list is null\n");
 				return (ft_free(temp, 0, 0));
 			}
-			if (!(i += (ft_process_list(list, v_l))))
+			if (!(list_ret = (ft_process_list(list, v_l))))
 			{
 				printf("couldn't ft_process list\n");
 				return (ft_free(temp, 0, list));
 			}
+			i += list_ret;
 			printed += ft_strlen(list->text_to_print);
 			//printf("I after ft_process_list: %d", i);
 			ft_free(temp, 0, list);

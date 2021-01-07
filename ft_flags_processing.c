@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 17:32:55 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 18:56:11 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int		ft_process_list(t_list *list, va_list *v_list)
 		return (ft_free(str_to_print, 0, 0));
 	//printf("S: %s\n", str_to_print);
 	ft_putstr_fd(list->text_to_print, FD);
-	ft_free(str_to_print, list->text_to_print, 0);
-	//Should return the length of %string, to increment string in the ft_printf function
+	//THIS ONE IS CONSIDERED AS FREEING UNALLOCATED MEM ft_free(str_to_print, 0, 0);
 	return (ft_strlen(list->definer_str) + 1);
 }
