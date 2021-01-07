@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 12:25:19 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 12:13:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_next_arg_to_str(va_list *v_l, t_list *list)
 		arg_as_str = ft_percent_type_next_arg_to_str();
 	else if (list->type_flag == 's')
 		arg_as_str = ft_s_type_next_arg_to_str(v_l);
+	else if (list->type_flag == 'p')
+		arg_as_str = ft_p_type_next_arg_to_str(v_l);
 	else if (list->type_flag == 'd' || list->type_flag == 'i')
 		arg_as_str = ft_d_or_i_type_next_arg_to_str(v_l);
 	else if (list->type_flag == 'u')

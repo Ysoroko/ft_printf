@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 15:28:17 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 12:37:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	*ft_itoa(int n);
 char	*ft_strdup(const char *src);
 char	*ft_strjoin(char const *pref, char const *suff);
 char	*ft_uitoa_base(unsigned int n, char *base);
+char	*ft_ultoa_base(unsigned long n, char *base);
 
 /*
 ** Next Arg To Str Functions
@@ -80,12 +81,18 @@ char	*ft_uitoa_base(unsigned int n, char *base);
 char	*ft_c_type_next_arg_to_str(va_list *v_l);
 char	*ft_percent_type_next_arg_to_str(void);
 char	*ft_s_type_next_arg_to_str(va_list *v_l);
-//char	*ft_p_type_next_arg_to_str(va_list *v_l, t_list *list);
+char	*ft_p_type_next_arg_to_str(va_list *v_l);
 
 char	*ft_d_or_i_type_next_arg_to_str(va_list *v_l);
 char	*ft_u_type_next_arg_to_str(va_list *v_l);
 char	*ft_lowercase_x_type_next_arg_to_str(va_list *v_l);
 char	*ft_uppercase_x_type_next_arg_to_str(va_list *v_l);
+
+char	*ft_process_minus_flag(char *str_rec, char *str_to_insert, t_list *list);
+char	*ft_width_and_zero_to_str(char *str_to_insert, t_list *list);
+char	*ft_precision_to_str(char *str_to_format, t_list *list);
+
+
 
 /*
 ** Printf Utils

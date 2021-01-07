@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 15:24:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 12:11:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,46 @@
 ** %[flags][width][.precision][length]specifier
 */
 
-
-
 int main()
 {
-	char	*str = "First";
-	//int		n = 14;
+	//Example with a lot of args
+	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
+
+
+	//printf("%.2s\n", "abc");
+	//printf("%02d\n", 1);
 
 	
-	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
-	ft_printf("String First: %s\n", str);
-	ft_printf("Char c: %c\n",'c');
-	ft_printf("Percent: %%\n");
-	ft_printf("Int d 400000: %d\n", 400000);
-	ft_printf("Int i -400000: %i\n", -400000);
-	ft_printf("Unsigned Int 400000: %u\n", 400000);
-	ft_printf("Unsigned Int -400000: %u\n", -400000);
-	ft_printf("Hexadecimal x 400000: %x\n", 400000);
-	ft_printf("Hexadecimal X -400000: %x\n", -400000);
+	ft_printf("\n\n\n");
+	
+	char *str;
 
+	str = malloc(4);
+	
+	ft_printf("%s\n\n", "FT_PRINTF");
+	ft_printf("Char c: |%c|\n",'c');
+	ft_printf("Percent: |%%|\n");
+	ft_printf("Address: |%p|\n", str);
+	ft_printf("Int d 400000: |%d|\n", 400000);
+	ft_printf("Int i -400000: |%i|\n", -400000);
+	ft_printf("Unsigned Int 400000: |%u|\n", 400000);
+	ft_printf("Unsigned Int -400000, expected '4294567296': |%u|\n", -400000);
+	ft_printf("Hexadecimal x 400000, expected '61a80': |%x|\n", 400000);
+	ft_printf("Hexadecimal X -400000, expected 'fff9e580' : |%x|\n", -400000);
 
-	//printf("%u\n", -19);
-	//ft_printf("%u\n", -19);
+	ft_printf("\n\n\n");
+	printf("%s\n\n", "PRINTF");
+	printf("Char c: |%c|\n",'c');
+	printf("Percent: |%%|\n");
+	printf("Address: |%p|\n", str);
+	printf("Int d 400000: |%d|\n", 400000);
+	printf("Int i -400000: |%i|\n", -400000);
+	printf("Unsigned Int 400000: |%u|\n", 400000);
+	printf("Unsigned Int -400000, expected '4294567296': |%u|\n", -400000);
+	printf("Hexadecimal x 400000, expected '61a80': |%x|\n", 400000);
+	printf("Hexadecimal X -400000, expected 'fff9e580' : |%x|\n", -400000);
+	
+
 	return (0);
 }
 
@@ -67,7 +85,7 @@ int main()
 **
 ** "Width":		Specifies how many spaces are needed for the printed string. (= number before the '.' flag)
 **				- By default, the character is formatted to the right (Ex: printf("%5s\n", "ha") --> "   ha")
-**				- If the width is too little to print the string, it's ignored ("Ex: printf("%2s\n", "haha"); --> "haha")
+**				- If the width is too little to print, it's ignored ("Ex: printf("%2s\n", "haha"); --> "haha")
 **				- Works with all the formats "cspdiuxX% "
 **				- Several widths separated by other flags --> error
 **				- Format = Unsigned int
@@ -88,9 +106,8 @@ int main()
 **					2) The width sort of "mallocs" a string with "width" number of spaces in it.It then writes the string from 1) inside
 **				- If there is a '.', but no number afterwards --> no effect
 **				- If a precision of 0 is used with a '0' in diUxX -> prints nothing
+**				- If a precision is used with '-' flag -> '-' flag is ignored
 **				- FORMAT = UNSIGNED INT
-**					
-**					
 **
 ** "0":			Fills in the extra spaces from the width specifier with '0' char
 ** 				- Ignored with no width, with '-' flag, and with precision present
@@ -105,7 +122,8 @@ int main()
 **				- Overrides the "0" flag
 **				- Works with all the type specifiers: "cspdiuxX%"
 **				- "-" after the "." --> error
-**				- Multiple "-" befoe the "." --> no problem
+**				- Multiple "-" before the "." --> no problem
+**				- If presicion is present - '-' is ignored
 **
 ** "*":			Instead of the number explicitly written in first printf argument, the width or precision
 **				(depending on whether '*' is before orafter the '.' flag will be instead taken from the next printf argument)

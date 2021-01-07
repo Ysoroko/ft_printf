@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/06 15:29:59 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/07 12:38:35 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,11 @@ SRC				=	ft_printf.c \
 					./libft_utils/ft_strdup.c \
 					./libft_utils/ft_strjoin.c \
 					./libft_utils/ft_uitoa_base.c \
+					./libft_utils/ft_ultoa_base.c \
 					\
 					./next_arg_to_str_functions/ft_csp_percent_flags.c \
 					./next_arg_to_str_functions/ft_diux_flags.c \
+					./next_arg_to_str_functions/ft_width_prec_zero_minus.c \
 					\
 					./printf_utils/ft_atoi_for_printf.c \
 					./printf_utils/ft_printf_utils.c 
@@ -46,9 +48,11 @@ OBJS			=	ft_printf.o \
 					ft_strdup.o \
 					ft_strjoin.o \
 					ft_uitoa_base.o \
+					ft_ultoa_base.o \
 					\
 					ft_csp_percent_flags.o \
 					ft_diux_flags.o \
+					ft_width_prec_zero_minus.o \
 					\
 					ft_atoi_for_printf.o \
 					ft_printf_utils.o 

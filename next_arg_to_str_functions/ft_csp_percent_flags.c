@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 15:29:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 12:40:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_c_type_next_arg_to_str(va_list *v_l)
 	arg_as_str = 0;
 	if (!(arg_as_str = ft_char_alloc(1, '0')))
 		return (0);
-	arg_as_str[0] = (char)va_arg(*v_l, unsigned int);
+	arg_as_str[0] = (char)va_arg(*v_l, int);
 	return (arg_as_str);
 }
 
@@ -56,12 +56,15 @@ char	*ft_s_type_next_arg_to_str(va_list *v_l)
 
 char	*ft_p_type_next_arg_to_str(va_list *v_l)
 {
-	char *arg_as_str;
-	char *temp;
+	void			*address;
+	unsigned long	address_to_uint;
+	char			*arg_as_str;
+	char			*temp;
 
 	arg_as_str = 0;
-	temp = 0;
-	if (!(temp = ft_itoa(va_arg(*v_l, unsigned int))))
+	address = va_arg(*v_l, void *);
+	address_to_uint = (unsigned long)address;
+	if (!(temp = ft_ultoa_base(address_to_uint, BASE_LX)))
 		return (0);
 	if (!(arg_as_str = ft_strjoin("0x", temp)))
 		return (0);
