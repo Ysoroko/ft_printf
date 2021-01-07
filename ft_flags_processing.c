@@ -6,14 +6,18 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 12:13:36 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 13:17:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
 /*
-** cspdiuxX%
+** FT_NEXT_ARG_TO_STR
+** Checks the flag type stored in list and depending on the type, sends
+** va_list and t_list to the corresponding function, which extracts the next
+** argument of printf and converts it to a string
+** Returns the resulting string
 */
 
 char	*ft_next_arg_to_str(va_list *v_l, t_list *list)

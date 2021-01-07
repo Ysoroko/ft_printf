@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 12:37:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 13:22:22 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@
 
 typedef struct	s_str_with_flags_list
 {
-	char	*definer_str;
+	char				*definer_str;
 	//Malloc'd: before_point + after_point;
-	char	*before_dot;
-	char	*after_dot;
+	char				*before_dot;
+	char				*after_dot;
 	
-	char	*minus_flag;
-	char	*star_before_point;
-	int		zero_flag;
-	char	*point_flag;
-	int		precision;
-	int		width;
-	char	*star_after_point;
-	char	type_flag;
-	char	*text_to_print;
+	char				*minus_flag;
+	char				*star_before_point;
+	int					zero_flag;
+	char				*point_flag;
+	unsigned int		precision;
+	unsigned int		width;
+	char				*star_after_point;
+	char				type_flag;
+	char				*text_to_print;
 }				t_list;
 
 # define FD 1
@@ -78,6 +78,7 @@ char	*ft_ultoa_base(unsigned long n, char *base);
 /*
 ** Next Arg To Str Functions
 */
+
 char	*ft_c_type_next_arg_to_str(va_list *v_l);
 char	*ft_percent_type_next_arg_to_str(void);
 char	*ft_s_type_next_arg_to_str(va_list *v_l);
@@ -89,23 +90,20 @@ char	*ft_lowercase_x_type_next_arg_to_str(va_list *v_l);
 char	*ft_uppercase_x_type_next_arg_to_str(va_list *v_l);
 
 char	*ft_process_minus_flag(char *str_rec, char *str_to_insert, t_list *list);
-char	*ft_width_and_zero_to_str(char *str_to_insert, t_list *list);
+char	*ft_width_and_zero_to_str(t_list *list);
 char	*ft_precision_to_str(char *str_to_format, t_list *list);
-
-
+char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list);
 
 /*
 ** Printf Utils
 */
+
 char	*ft_char_alloc(int n_chars, char c);
 int		ft_str_has_char_from_charset(char *str, char *charset);
 int		ft_str_has_other_chars(char *str, char *charset);
 int		ft_number_of_c_char_in_str(char *str, char c);
 int		ft_atoi_p(const char *str);
 t_list	*ft_lstnew(void);
-
-
-
 
 
 

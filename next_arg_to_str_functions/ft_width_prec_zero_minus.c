@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 12:08:16 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 13:41:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,10 @@ char	*ft_process_minus_flag(char *str_rec, char *str_to_insert, t_list *list)
 ** or in case the malloc fails
 */
 
-char	*ft_width_and_zero_to_str(char *str_to_insert, t_list *list)
+char	*ft_width_and_zero_to_str(t_list *list)
 {
 	char	fill_in_char;
 
-	if (list->width <= (int)ft_strlen(str_to_insert))
-		return (0);
 	if (list->zero_flag && !(list->minus_flag) && !(list->precision))
 		fill_in_char = '0';
 	else
@@ -71,29 +69,48 @@ char	*ft_width_and_zero_to_str(char *str_to_insert, t_list *list)
 	return (ft_char_alloc(list->width, fill_in_char));
 }
 
+/*
+** FT_PRECISION_S_TYPE_TO_STR
+** This function checks precision when the specified type is a string
+** Mallocs a string of [precision] chars and copies first
+** [precision] chars of str_to_format to it
+** Returns the result or 0 malloc fails
+*/
+
+char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
+{
+	char				*ret_str;
+	int					i;
+
+	if (!(ret_str = ft_char_alloc(list->precision, ' ')))
+		return (0);
+	i = -1;
+	while (ret_str[++i] && str_to_format[i])
+		ret_str[i] = str_to_format[i];
+	return (ret_str);
+}
+
+/*
+** FT_PRECISION_TO_STR
+** This function checks precision when the specified type is not a string
+** If [precision] <= str_to_format, precision remains unused
+** Otherwise, mallocs a string of [precision] chars, fills it with '0;
+** and copies str_to_format at the end of it
+** Returns the result or 0 if [precision] <= str_to_format or malloc fails
+*/
+
 char	*ft_precision_to_str(char *str_to_format, t_list *list)
 {
-	char	*ret_str;
-	int		str_to_format_len;
-	int		i;
-	int		j;
-	int		precision;
+	char				*ret_str;
+	unsigned int		str_to_format_len;
+	int					i;
+	int					j;
+	unsigned int		precision;
 
 	precision = list->precision;
-	str_to_format_len = (int)ft_strlen(str_to_format);
-	if (list->type_flag == 's')
-	{
-		if (precision >= str_to_format_len)
-			return (0);
-		else
-		{
-			ret_str = ft_char_alloc(precision, ' ');
-			i = -1;
-			while (ret_str[++i])
-				ret_str[i] = str_to_format[i];
-		}
-	}
-	else
+	str_to_format_len = ft_strlen(str_to_format);
+	ret_str = 0;
+	if (list->type_flag != 's')
 	{
 		if (list->precision <= str_to_format_len)
 			return (0);
@@ -108,4 +125,34 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 		}
 	}
 	return (ret_str);
+}
+
+char	*ft_width_prec_zero_minus(char *str, t_list *list)
+{
+	char			*width_str;
+	char			*prec_str;
+	char			*ret;
+	unsigned int	width;
+	unsigned int	precision;
+
+	width = 0;
+	precision = 0;
+	width_str = 0;
+	prec_str = str;
+	if (width && width > ft_strlen(str))
+	{
+		if(!(width_str = ft_width_and_zero_to_str(list)))
+			return (0);
+	}
+	if (precision && list->type_flag == 's' && precision < ft_strlen(str))
+	{
+		if(!(prec_str = ft_precision_s_type_to_str(str, list)))
+			return (0);
+	}
+	else if (precision && list->type_flag != 's' && precision > ft_strlen(str))
+		if(!(prec_str = ft_precision_to_str(str, list)))
+			return (0);
+	if (!(ret = ft_process_minus_flag(width_str, prec_str, list)))
+		return (0);
+	return (ret);
 }

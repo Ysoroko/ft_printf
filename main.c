@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 12:11:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/07 13:42:03 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@ int main()
 	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
 
 
-	//printf("%.2s\n", "abc");
+	printf("%-.20d\n", 34);
+	printf("%1.20d\n", 34);
 	//printf("%02d\n", 1);
 
-	
+	/*
 	ft_printf("\n\n\n");
 	
-	char *str;
+	int *str;
 
-	str = malloc(4);
+	str = malloc(sizeof(int));
 	
 	ft_printf("%s\n\n", "FT_PRINTF");
 	ft_printf("Char c: |%c|\n",'c');
@@ -55,7 +56,7 @@ int main()
 	printf("Unsigned Int -400000, expected '4294567296': |%u|\n", -400000);
 	printf("Hexadecimal x 400000, expected '61a80': |%x|\n", 400000);
 	printf("Hexadecimal X -400000, expected 'fff9e580' : |%x|\n", -400000);
-	
+	*/
 
 	return (0);
 }
@@ -107,6 +108,7 @@ int main()
 **				- If there is a '.', but no number afterwards --> no effect
 **				- If a precision of 0 is used with a '0' in diUxX -> prints nothing
 **				- If a precision is used with '-' flag -> '-' flag is ignored
+**				- If precision > width, only precision is printed
 **				- FORMAT = UNSIGNED INT
 **
 ** "0":			Fills in the extra spaces from the width specifier with '0' char
