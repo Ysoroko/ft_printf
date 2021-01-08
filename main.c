@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 18:07:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 11:44:21 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ int main()
 	//Example with a lot of args
 	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
 
-	printf("RET1: %d\n", ft_printf("FP: %40.20d\n", 42));
-	printf("RET2: %d\n", printf("FP: %40.20d\n", 42));
+	char *hello;
+	hello = malloc(1);
+	ft_printf("%.12xCouco%%u %.15s ca %pva?\n", -245678, "Test2", hello);
+	printf("%.12xCouco%%u %.15s ca %pva?\n", -245678, "Test2", hello);	
+	//printf("RET1: %d\n", ft_printf("FP: %40.20d\n", 42));
+	//printf("RET2: %d\n", printf("FP: %40.20d\n", 42));
 	//printf("%02d\n", 1);
 
 	/*
@@ -132,19 +136,3 @@ int main()
 **				- Both "*" and the width/precision int are present --> error
 **				- '0' or '-' cannot be after '*' --> error
 */
-
-void	ft_print_t_list(t_list *list)
-{
-	printf("\nCONTENTS OF T_LIST\n\n");
-	printf("DEFINER_STR: %s\n\n", list->definer_str);
-	printf("Before dot: %s\n", list->before_dot);
-	printf("After dot: %s\n", list->after_dot);
-	printf("Minus flag: %s\n", list->minus_flag);
-	printf("Star before point: %s\n", list->star_before_point);
-	printf("Zero flag: %d\n", list->zero_flag);
-	printf("Point flag: %s\n", list->point_flag);
-	printf("Width: %d\n", list->width);
-	printf("Precision: %d\n", list->precision);
-	printf("Star after point: %s\n", list->star_after_point);
-	printf("Type flag: %c\n\n", list->type_flag);
-}

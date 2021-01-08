@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/07 12:38:35 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/08 11:04:24 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,5 +86,8 @@ re:			fclean all
 
 run:		
 			@ $(CC) $(CFLAGS) -I includes $(SRC) main.c && ./a.out
+
+run2:		
+			@ $(CC) $(CFLAGS) -I includes $(SRC) main2.c && ./a.out
 
 .PHONY:		all clean fclean re bonus run

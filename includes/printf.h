@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 18:03:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 11:51:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct	s_str_with_flags_list
 	char				*star_before_point;
 	int					zero_flag;
 	char				*point_flag;
-	unsigned int		precision;
-	unsigned int		width;
+	int					precision;
+	int					width;
 	char				*star_after_point;
 	char				type_flag;
 	char				*text_to_print;
@@ -108,9 +108,6 @@ int		ft_number_of_c_char_in_str(char *str, char c);
 int		ft_atoi_p(const char *str);
 t_list	*ft_lstnew(void);
 int		ft_free(char *ptr1, char *ptr2, t_list *list);
-
-
-
 
 //TO DELETE
 void	ft_print_t_list(t_list *list);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 18:48:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 11:57:16 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,31 @@ char	*ft_s_type_next_arg_to_str(va_list *v_l)
 {
 	char *arg_as_str;
 
-	arg_as_str = 0;
-	if (!(arg_as_str = ft_strdup(va_arg(*v_l, char *))))
-		return (0);
-	return (arg_as_str);
+	arg_as_str = va_arg(*v_l, char *);
+	if (!(arg_as_str))
+		return (ft_strdup("(null)"));
+	return (ft_strdup(arg_as_str));
 }
 
 char	*ft_p_type_next_arg_to_str(va_list *v_l)
 {
 	void			*address;
-	unsigned long	address_to_uint;
+	unsigned long	address_to_ulong;
 	char			*arg_as_str;
 	char			*temp;
 
 	arg_as_str = 0;
 	address = va_arg(*v_l, void *);
-	address_to_uint = (unsigned long)address;
-	if (!(temp = ft_ultoa_base(address_to_uint, BASE_LX)))
+	address_to_ulong = (unsigned long)address;
+	if (!address_to_ulong)
+		return (ft_strdup("0x"));
+	if (!(temp = ft_ultoa_base(address_to_ulong, BASE_LX)))
 		return (0);
 	if (!(arg_as_str = ft_strjoin("0x", temp)))
+	{
+		ft_free(temp, 0, 0);
 		return (0);
-	//free(temp);
+	}
+	free(temp);
 	return (arg_as_str);
 }

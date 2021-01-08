@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:27:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 16:53:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 11:45:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,21 @@ int			ft_printf(const char *str, ...)
 		ret = -1;
 	va_end(v_list);
 	return (ret);
+}
+
+//TO DELETE
+void	ft_print_t_list(t_list *list)
+{
+	printf("\nCONTENTS OF T_LIST\n\n");
+	printf("DEFINER_STR: %s\n\n", list->definer_str);
+	printf("Before dot: %s\n", list->before_dot);
+	printf("After dot: %s\n", list->after_dot);
+	printf("Minus flag: %s\n", list->minus_flag);
+	printf("Star before point: %s\n", list->star_before_point);
+	printf("Zero flag: %d\n", list->zero_flag);
+	printf("Point flag: %s\n", list->point_flag);
+	printf("Width: %d\n", list->width);
+	printf("Precision: %d\n", list->precision);
+	printf("Star after point: %s\n", list->star_after_point);
+	printf("Type flag: %c\n\n", list->type_flag);
 }
