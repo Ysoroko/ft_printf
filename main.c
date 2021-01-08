@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/08 11:44:21 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 17:50:40 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,12 @@
 ** %[flags][width][.precision][length]specifier
 */
 
+//!!!!!!!!!!!!!!!!!!!!!printf("%020.8%") works (with 'c' it doesn't!!!);
 int main()
 {
-	//Example with a lot of args
-	//ft_printf("%s\n%c\n%%\n%d\n%i\n%u\n%x\n%X\n", str, 'c', 4000000, -400000, -400000, -400000, -19);
-
-	char *hello;
-	hello = malloc(1);
-	ft_printf("%.12xCouco%%u %.15s ca %pva?\n", -245678, "Test2", hello);
-	printf("%.12xCouco%%u %.15s ca %pva?\n", -245678, "Test2", hello);	
-	//printf("RET1: %d\n", ft_printf("FP: %40.20d\n", 42));
-	//printf("RET2: %d\n", printf("FP: %40.20d\n", 42));
-	//printf("%02d\n", 1);
-
+	printf("P: %.s\n", "hello");
+	ft_printf("F: %.s\n", "hello");
 	/*
-	ft_printf("\n\n\n");
-	
-	int *str;
-
-	str = malloc(sizeof(int));
-	
 	ft_printf("%s\n\n", "FT_PRINTF");
 	ft_printf("Char c: |%c|\n",'c');
 	ft_printf("Percent: |%%|\n");
@@ -81,7 +67,8 @@ int main()
 ** %U = Unsigned Integer
 ** %x = Hexadecimal with base "0123456789abcdef"
 ** %X = Hexadecimal with base "0123456789ABCDEF"
-*/
+** %% = only a '%' char is printed (warning, printf("%020.8%") != printf("%020.8c", 'c'))
+*/  
 
 
 /*

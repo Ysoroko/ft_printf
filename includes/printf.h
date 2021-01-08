@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/08 11:51:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 16:29:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		ft_analyze_first_printf_argument(const char *str, va_list *v_list);
 int		ft_wrong_order_of_flags(char *before_dot, char *after_dot);
 int		ft_check_for_errors(t_list *list, va_list *v_list);
 int		ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft);
+int		ft_check_flags_for_special_combo(t_list *list);
 
 /*
 ** Libft Utils
@@ -78,6 +79,8 @@ char	*ft_strjoin(char const *pref, char const *suff);
 char	*ft_uitoa_base(unsigned int n, char *base);
 char	*ft_ultoa_base(unsigned long n, char *base);
 
+int		ft_strcmp(char *s1, char *s2);
+
 /*
 ** Next Arg To Str Functions
 */
@@ -87,7 +90,7 @@ char	*ft_percent_type_next_arg_to_str(void);
 char	*ft_s_type_next_arg_to_str(va_list *v_l);
 char	*ft_p_type_next_arg_to_str(va_list *v_l);
 
-char	*ft_d_or_i_type_next_arg_to_str(va_list *v_l);
+char	*ft_d_or_i_type_next_arg_to_str(va_list *v_l, t_list *list);
 char	*ft_u_type_next_arg_to_str(va_list *v_l);
 char	*ft_lowercase_x_type_next_arg_to_str(va_list *v_l);
 char	*ft_uppercase_x_type_next_arg_to_str(va_list *v_l);

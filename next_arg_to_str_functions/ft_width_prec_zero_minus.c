@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/08 11:12:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 17:57:19 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ char	*ft_width_and_zero_to_str(t_list *list)
 
 	if (list->width <= (int)ft_strlen(list->text_to_print))
 		return (list->text_to_print);
-	
 	if (list->zero_flag && !(list->minus_flag) && !(list->precision))
 		fill_in_char = '0';
 	else
@@ -99,9 +98,11 @@ char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
 	char	*ret_str;
 	int		i;
 
-	if (list->precision >= (int)ft_strlen(list->text_to_print)
-		|| !list->precision)
+	if (list->precision >= (int)ft_strlen(list->text_to_print) ||
+		!list->precision)
 		return (str_to_format);
+	else if (list->after_dot && !(list->precision))
+		return (ft_strdup(""));
 	if (!(ret_str = ft_char_alloc(list->precision, ' ')))
 		return (0);
 	i = -1;
@@ -128,7 +129,10 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 
 	precision = list->precision;
 	if (precision <= (int)ft_strlen(str_to_format) || !precision)
+	{
+		//printf("here i am\n");
 		return (str_to_format);
+	}
 	ret_str = 0;
 	if ((minus = ft_strchr(str_to_format, '-')) != 0)
 		precision++;

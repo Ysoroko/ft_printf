@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:52:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/07 18:05:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/08 16:31:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ int	ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft)
 ** FT_CHECK_FOR_ERRORS
 ** Checks for error cases present in t_list argument (+ if t_list/va_list = 0)
 ** 1) '0' flag present + type specifier is 's', 'c' or 'p'
-** 2) '0' and '-' flags present together
-** 3) Precision flag's undefined behaviour with 'c' and 'p' flags
-** 4) All chars that shouldn't be present in the definer string
-** 5) All chars that shouldn't be present in the string after the '.'
-** 6) Too many '.' ot '*' flags
-** 7) There are both a width in numbers and a '*' flag before the "."
-** 8) There are both a precision in numbers and a '*' flag after the "."
+** 2) Precision flag's undefined behaviour with 'c' and 'p' flags
+** 3) All chars that shouldn't be present in the definer string
+** 4) All chars that shouldn't be present in the string after the '.'
+** 5) Too many '.' ot '*' flags
+** 6) There are both a width in numbers and a '*' flag before the "."
+** 7) There are both a precision in numbers and a '*' flag after the "."
 ** Returns corresponding int in case of mistake found, 0 otherwise
 */
 
@@ -53,20 +52,28 @@ int	ft_check_for_errors(t_list *list, va_list *v_list)
 		return (-1);
 	if (list->zero_flag && (ft_strchr("scp", list->type_flag)))
 		return (1);
-	if (list->zero_flag && list->minus_flag)
-		return (2);
 	if (list->precision && (ft_strchr("cp", list->type_flag)))
-		return (3);
+		return (2);
 	if (ft_str_has_other_chars(list->definer_str, ACCEPTED_CHARS))
-		return (4);
+		return (3);
 	if (ft_str_has_other_chars(list->after_dot, "0123456789*cspdiuxX%"))
-		return (5);
+		return (4);
 	if (ft_too_many_flag_chars_in_str(list->definer_str,
 			list->before_dot, list->after_dot))
-		return (6);
+		return (5);
 	if (list->width && list->star_before_point)
-		return (7);
+		return (6);
 	if (list->precision && list->star_after_point)
-		return (8);
+		return (7);
+	return (0);
+}
+
+int	ft_check_flags_for_special_combo(t_list *list)
+{
+	if (list->zero_flag && list->minus_flag)
+		list->zero_flag = 0;
+	if (!ft_strcmp(list->text_to_print, "0") && !list->precision &&
+		ft_strchr("pdiuxX", list->type_flag))
+		list->text_to_print = "";
 	return (0);
 }
