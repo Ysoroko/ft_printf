@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:59:49 by ldelmas           #+#    #+#             */
-/*   Updated: 2021/01/08 10:09:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/09 18:36:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ int main()
 	change_fdout(&dpl, &fd);
 
 
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	
 	use_colors("TEST : NO FLAGS -------- FORMATS '%sxXpd' :     ", (void*)0);
 	ft_printf("%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);

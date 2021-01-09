@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 17:09:35 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/08 12:16:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/09 15:27:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,11 @@
 ** Returns the address of the newly created string or 0 in case of error
 */
 
-char	*ft_d_or_i_type_next_arg_to_str(va_list *v_l, t_list *list)
+char	*ft_d_or_i_type_next_arg_to_str(va_list *v_l)
 {
 	char	*arg_as_str;
-	int		temp;
 
-	arg_as_str = 0;
-	temp = va_arg(*v_l, int);
-	if (!(list->precision) && !temp)
-		return (ft_strdup(""));
-	else if (!(arg_as_str = ft_itoa(temp)))
+	if (!(arg_as_str = ft_itoa(va_arg(*v_l, int))))
 		return (0);
 	return (arg_as_str);
 }

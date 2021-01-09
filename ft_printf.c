@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:27:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/08 11:45:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/09 15:14:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	ft_print_t_list(t_list *list)
 	printf("Width: %d\n", list->width);
 	printf("Precision: %d\n", list->precision);
 	printf("Star after point: %s\n", list->star_after_point);
-	printf("Type flag: %c\n\n", list->type_flag);
+	printf("Type flag: %c\n", list->type_flag);
+	printf("Text_to_print: %s\n\n", list->text_to_print);
 }

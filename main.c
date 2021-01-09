@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/08 17:50:40 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/09 19:07:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,11 @@
 //!!!!!!!!!!!!!!!!!!!!!printf("%020.8%") works (with 'c' it doesn't!!!);
 int main()
 {
-	printf("P: %.s\n", "hello");
-	ft_printf("F: %.s\n", "hello");
-	/*
-	ft_printf("%s\n\n", "FT_PRINTF");
-	ft_printf("Char c: |%c|\n",'c');
-	ft_printf("Percent: |%%|\n");
-	ft_printf("Address: |%p|\n", str);
-	ft_printf("Int d 400000: |%d|\n", 400000);
-	ft_printf("Int i -400000: |%i|\n", -400000);
-	ft_printf("Unsigned Int 400000: |%u|\n", 400000);
-	ft_printf("Unsigned Int -400000, expected '4294567296': |%u|\n", -400000);
-	ft_printf("Hexadecimal x 400000, expected '61a80': |%x|\n", 400000);
-	ft_printf("Hexadecimal X -400000, expected 'fff9e580' : |%x|\n", -400000);
+	char *hello = "coucou";
+	unsigned	int u = 2456789;
 
-	ft_printf("\n\n\n");
-	printf("%s\n\n", "PRINTF");
-	printf("Char c: |%c|\n",'c');
-	printf("Percent: |%%|\n");
-	printf("Address: |%p|\n", str);
-	printf("Int d 400000: |%d|\n", 400000);
-	printf("Int i -400000: |%i|\n", -400000);
-	printf("Unsigned Int 400000: |%u|\n", 400000);
-	printf("Unsigned Int -400000, expected '4294567296': |%u|\n", -400000);
-	printf("Hexadecimal x 400000, expected '61a80': |%x|\n", 400000);
-	printf("Hexadecimal X -400000, expected 'fff9e580' : |%x|\n", -400000);
-	*/
-
+	ft_printf("F: %0*.*x\n", 12, -12, -245678);
+	printf("P: %0*.*x\n", 12, -12, -245678);
 	return (0);
 }
 

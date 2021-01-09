@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/08 16:29:50 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/09 18:49:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*ft_percent_type_next_arg_to_str(void);
 char	*ft_s_type_next_arg_to_str(va_list *v_l);
 char	*ft_p_type_next_arg_to_str(va_list *v_l);
 
-char	*ft_d_or_i_type_next_arg_to_str(va_list *v_l, t_list *list);
+char	*ft_d_or_i_type_next_arg_to_str(va_list *v_l);
 char	*ft_u_type_next_arg_to_str(va_list *v_l);
 char	*ft_lowercase_x_type_next_arg_to_str(va_list *v_l);
 char	*ft_uppercase_x_type_next_arg_to_str(va_list *v_l);
