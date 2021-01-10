@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 13:34:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:17:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,6 @@ int		ft_process_list(t_list *list, va_list *v_list)
 	}
 	//printf("S after w/p/0/-: %s\n", str_after_w_p_z_m);
 	ft_putstr_fd(str_after_w_p_z_m, FD);
-	//THIS ONE IS CONSIDERED AS FREEING UNALLOCATED MEM ft_free(printf_arg_str, 0, 0);
+	ft_free(printf_arg_str, str_after_w_p_z_m, 0);
 	return (ft_strlen(list->definer_str) + 1);
 }
