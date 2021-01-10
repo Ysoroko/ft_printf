@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/09 16:27:56 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:32:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,7 @@ char	*ft_p_type_next_arg_to_str(va_list *v_l)
 		return (ft_strdup("0x"));
 	if (!(temp = ft_ultoa_base(address_to_ulong, BASE_LX)))
 		return (0);
-	if (!(arg_as_str = ft_strjoin("0x", temp)))
-	{
-		ft_free(temp, 0, 0);
-		return (0);
-	}
-	free(temp);
+	arg_as_str = ft_strjoin("0x", temp);
+	ft_free(&temp, 0, 0);
 	return (arg_as_str);
 }

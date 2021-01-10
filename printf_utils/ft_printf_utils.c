@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:25:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 13:17:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:32:16 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,20 +114,20 @@ t_list	*ft_lstnew(void)
 ** Always returns 0
 */
 
-int		ft_free(char *ptr1, char *ptr2, t_list *list)
+int		ft_free(char **ptr1, char **ptr2, t_list **list)
 {
-	free(ptr1);
+	free(*ptr1);
 	ptr1 = 0;
-	free(ptr2);
+	free(*ptr2);
 	ptr2 = 0;
-	if (list)
+	if (*list)
 	{
-		free(list->before_dot);
-		list->before_dot = 0;
-		free(list->after_dot);
-		list->after_dot = 0;
+		free(*(list->before_dot));
+		*(list->before_dot) = 0;
+		free(*(list->after_dot));
+		*(list->after_dot) = 0;
 		free(list);
-		list = 0;
+		*list = 0;
 	}
 	return (0);
 }

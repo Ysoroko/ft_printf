@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:27:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/09 15:14:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:32:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** va_copy copies the list of params to a temporary list to read it > once
 */
 
-int			ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	v_list;
 	int		ret;

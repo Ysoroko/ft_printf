@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 15:17:19 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:33:04 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,11 +161,11 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 		prec_str = ft_precision_to_str(str, list);
 	if (!prec_str)
 	{
-		ft_free(width_str, 0, 0);
+		ft_free(&width_str, 0, 0);
 		return (0);
 	}
 	ret = ft_process_minus_flag(width_str, prec_str, list);
-	ft_free(width_str, prec_str, 0);
+	ft_free(&width_str, &prec_str, 0);
 	//printf("Returning ret as :%s\n", ret);
 	return (ret);
 }

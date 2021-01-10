@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 13:16:27 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:31:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int		ft_str_has_other_chars(char *str, char *charset);
 int		ft_number_of_c_char_in_str(char *str, char c);
 int		ft_atoi_p(const char *str);
 t_list	*ft_lstnew(void);
-int		ft_free(char *ptr1, char *ptr2, t_list *list);
+int		ft_free(char **ptr1, char **ptr2, t_list **list);
 
 //TO DELETE
 void	ft_print_t_list(t_list *list);

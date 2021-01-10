@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:59:49 by ldelmas           #+#    #+#             */
-/*   Updated: 2021/01/10 13:21:21 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:20:07 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,8 @@ int main()
 	file2 = fopen("test2.txt", "w+");
 	change_fdout(&dpl, &fd);
 
-
+	while (1)
+	{
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	
 	use_colors("TEST : NO FLAGS -------- FORMATS '%sxXpd' :     ", (void*)0);
@@ -634,6 +635,7 @@ int main()
 	fprintf(file2, "COUCOU %s comment vas-tu en cette %s journée? Il fait %s", (void*)0, "horrible", (void*)0);
 
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, (void*)0);
+	}
 	close(fd);
 	dup2(dpl, 1);
 	close(dpl);

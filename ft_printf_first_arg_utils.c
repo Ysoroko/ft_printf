@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 15:06:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 15:32:11 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static t_list	*ft_flags_to_list(char *str_percent)
 	{
 		if (!(list->after_dot = ft_extract_str(list->point_flag + 1, "")))
 		{
-			ft_free(list->before_dot, 0, 0);
+			ft_free(&(list->before_dot), 0, 0);
 			return (0);
 		}
 	}
@@ -132,13 +132,13 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 			if (!(temp = ft_extract_str(&(s[i + 1]), TYPE_CHARS)))
 				return (0);
 			if (!(list = ft_flags_to_list(temp)))
-				return (ft_free(temp, 0, 0));
+				return (ft_free(&temp, 0, 0));
 			if (!(list_ret = (ft_process_list(list, v_l))))
-				return (ft_free(temp, 0, list));
+				return (ft_free(&temp, 0, &list));
 			i += list_ret;
 			printed += ft_strlen(list->text_to_print);
 			//printf("I after ft_process_list: %d", i);
-			ft_free(temp, 0, list);
+			ft_free(&temp, 0, &list);
 		}
 		ft_putchar_fd(s[i], FD);
 		printed++;
