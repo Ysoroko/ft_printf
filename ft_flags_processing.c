@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/09 19:26:32 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 13:34:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ void	ft_stars_flags_process(t_list *list, va_list *v_list)
 		if (list->precision < 0)
 		{
 			if (list->type_flag != 's')
+			{
 				list->precision = 0;
+				list->after_dot = 0;
+			}
 			else
 				list->precision *= -1;
-				//ADD HERE A TRACK OF NEGATIVE PRECISION
 		}
 	}
 }
@@ -93,11 +95,12 @@ int		ft_process_list(t_list *list, va_list *v_list)
 {
 	char	*printf_arg_str;
 	char	*str_after_w_p_z_m;
+	int		ret;
 
 	//ft_print_t_list(list);
-	if (ft_check_for_errors(list, v_list))
+	if ((ret = ft_check_for_errors(list, v_list)) != 0)
 	{
-		printf ("Error found in t_list\n");
+		printf ("Error %d found in t_list\n", ret);
 		return (0);
 	}
 	ft_stars_flags_process(list, v_list);

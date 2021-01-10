@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/09 19:13:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/10 13:18:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*ft_width_and_zero_to_str(t_list *list)
 		return (0);
 	if (ft_strchr(list->text_to_print, '-') && fill_in_char == '0')
 		ret_str[0] = '-';
+	
 	return (ret_str);
 }
 
@@ -75,8 +76,15 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 	int		i;
 	int		j;
 	int		precision;
+	int		minus;
 
 	precision = list->precision;
+	minus = 0;
+	if (precision < 0)
+	{
+		precision *= -1;
+		minus = 1;
+	}
 	if (!precision)
 		return (str_to_format);
 	ret_str = 0;
