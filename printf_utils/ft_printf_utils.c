@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:25:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 12:26:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int		ft_str_has_other_chars(char *str, char *charset)
 	int i;
 	int j;
 
-	i = -1;
-	j = -1;
 	if (!str || !charset)
 		return (0);
+	i = -1;
+	j = -1;
 	while (str[++i])
 	{
 		if (!(ft_strchr(charset, str[i])))
@@ -70,6 +70,8 @@ int		ft_number_of_c_char_in_str(char *str, char c)
 	int i;
 	int count;
 
+	if (!str)
+		return (0);
 	i = -1;
 	count = 0;
 	while (str[++i])

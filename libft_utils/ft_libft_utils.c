@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:18:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 12:31:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putstr_fd(char *s, int fd)
 	int i;
 
 	i = 0;
-	if (s == 0)
+	if (!s)
 		return ;
 	while (s[i] != '\0')
 	{

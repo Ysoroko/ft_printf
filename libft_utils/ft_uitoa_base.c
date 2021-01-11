@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:44:29 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 12:32:48 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ char				*ft_uitoa_base(unsigned int n, char *base)
 	int				i;
 	char			*str;
 
+	if (!base)
+		return (0);
 	i = 0;
 	base_len = ft_strlen(base);
 	mem_length = ft_count_mem(n, base_len);

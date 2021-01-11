@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:59:49 by ldelmas           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:12:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,6 @@ int main()
 	file2 = fopen("test2.txt", "w+");
 	change_fdout(&dpl, &fd);
 
-while (1)
-{
 	use_colors("TEST : NO FLAGS -------- FORMATS '%sxXpd' :     ", (void*)0);
 	ft_printf("%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);
@@ -643,5 +641,4 @@ while (1)
 	close(dpl);
 	fclose(file1);
 	fclose(file2);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:52:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:09:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 12:34:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 int	ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft)
 {
+	if (!all || !bef)
+		return (0);
 	if (ft_number_of_c_char_in_str(all, '.') > 1)
 		return (1);
 	if (ft_number_of_c_char_in_str(bef, '*') > 1)

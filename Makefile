@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/11 11:10:31 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/11 12:45:45 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ fclean:		clean
 			@ rm -f $(NAME)
 
 aclean:		fclean
-			@ rm -f a.out
+			@ rm -f a.out test1.txt test2.txt
 
 re:			fclean all
 

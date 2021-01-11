@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 12:30:59 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ char	*ft_width_and_zero_to_str(t_list *list)
 	char	fill_in_char;
 	char	*ret_str;
 
+	if (!list)
+		return (0);
 	if (list->zero_flag)
-	{
 		fill_in_char = '0';
-	}
 	else
 		fill_in_char = ' ';
 	if (!(ret_str = ft_char_alloc(list->width, fill_in_char)))
@@ -51,6 +51,8 @@ char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
 	char	*ret_str;
 	int		i;
 
+	if (!str_to_format || !list)
+		return (0);
 	if (!list->precision)
 		return (ft_strdup(str_to_format));
 	if (!(ret_str = ft_char_alloc(list->precision, ' ')))
@@ -77,6 +79,8 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 	int		precision;
 	int		minus;
 
+	if (!str_to_format || !list)
+		return (0);
 	precision = list->precision;
 	minus = 0;
 	if (!precision)
@@ -116,6 +120,8 @@ char	*ft_process_minus_flag(char *width_str, char *prec_str, t_list *list)
 	int		i;
 	int		j;
 
+	if (!prec_str || !list)
+		return (0);
 	if (!width_str)
 		return (ft_strdup(prec_str));
 	if (list->minus_flag)
@@ -146,6 +152,8 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	unsigned int	width;
 	unsigned int	precision;
 
+	if (!str || !list)
+		return (0);
 	width = list->width;
 	precision = list->precision;
 	ret = 0;

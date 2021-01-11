@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 12:44:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ static t_list	*ft_flags_to_list(char *str_percent)
 {
 	t_list	*list;
 
-	if (!(list = ft_lstnew()))
+	if (!str_percent || !(list = ft_lstnew()))
 		return (0);
 	list->definer_str = str_percent;
 	if (!(list->before_dot = ft_extract_str(str_percent, ".")))
 		return (0);
 	if ((list->point_flag = ft_strchr(str_percent, '.')) != 0)
 	{
-		if (!(list->after_dot = ft_extract_str(list->point_flag + 1, TYPE_CHARS)))
+		if (!(list->after_dot = ft_extract_str(&((list->point_flag)[1]), TYPE_CHARS)))
 		{
 			ft_free(&(list->before_dot), 0, 0);
 			return (0);
@@ -123,7 +123,7 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 
 	i = -1;
 	printed = 0;
-	if (v_l == 0)
+	if (v_l == 0 || s == 0)
 		return (0);
 	while (s[++i])
 	{

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 12:39:49 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:09:33 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 12:33:35 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_check_flags_for_special_combo(t_list *list)
 {
 	int	temp;
 
+	if (!list)
+		return (-1);
 	if (!list->precision && list->after_dot && list->type_flag == 's')
 	{
 		temp = list->width + 1;
@@ -38,16 +40,16 @@ int	ft_check_flags_for_special_combo(t_list *list)
 		return (2);
 	}
 	if (list->precision && list->type_flag == 's' &&
-		list->precision >= ft_strlen(list->text_to_print))
+		list->precision >= (int)ft_strlen(list->text_to_print))
 		list->precision = 0;
 	if (list->precision && list->type_flag != 's' &&
-		list->precision <= ft_strlen(list->text_to_print))
+		list->precision <= (int)ft_strlen(list->text_to_print))
 		list->precision = 0;
 	if (list->zero_flag && (list->minus_flag || (list->after_dot &&
 		ft_strchr("diuxX", list->type_flag))))
 		list->zero_flag = 0;
 	if ((list->precision && list->width && list->precision >= list->width)
-		|| (list->width && list->width <= ft_strlen(list->text_to_print)))
+		|| (list->width && list->width <= (int)ft_strlen(list->text_to_print)))
 		list->width = 0;
 	if (!ft_strcmp(list->text_to_print, "(null)"))
 	{
