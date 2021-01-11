@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 12:30:59 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 18:03:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
 
 	if (!str_to_format || !list)
 		return (0);
-	if (!list->precision)
+	if (!list->precision || list->precision >= (int)ft_strlen(str_to_format))
 		return (ft_strdup(str_to_format));
 	if (!(ret_str = ft_char_alloc(list->precision, ' ')))
 		return (0);
@@ -83,7 +83,8 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 		return (0);
 	precision = list->precision;
 	minus = 0;
-	if (!precision)
+	if (!precision || (list->precision && list->type_flag != 's' &&
+		list->precision <= (int)ft_strlen(list->text_to_print)))
 		return (ft_strdup(str_to_format));
 	ret_str = 0;
 	if (ft_strchr(str_to_format, '-'))
@@ -159,7 +160,7 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	ret = 0;
 	width_str = 0;
 	prec_str = 0;
-	if (width)
+	if (width && (!(width <= precision) || !(width <= (unsigned int)ft_strlen(str))))
 		if (!(width_str = ft_width_and_zero_to_str(list)))
 			return (0);
 	//printf("W to S result: %s\n", width_str);
@@ -176,4 +177,8 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	ft_free(&width_str, &prec_str, 0);
 	//printf("Returning ret as :%s\n", ret);
 	return (ret);
+
+	if ((list->precision && list->width && list->precision >= list->width)
+		|| (list->width && list->width <= (int)ft_strlen(list->text_to_print)))
+		list->width = 0;
 }

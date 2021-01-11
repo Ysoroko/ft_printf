@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 17:37:23 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ char	*ft_percent_type_next_arg_to_str(void)
 	return (arg_as_str);
 }
 
-char	*ft_s_type_next_arg_to_str(va_list *v_l)
+char	*ft_s_type_next_arg_to_str(va_list *v_l, t_list *list)
 {
 	char *arg_as_str;
 
+	if (!list->precision && list->after_dot)
+		return (ft_strdup(""));
 	if (!(arg_as_str = va_arg(*v_l, char *)))
 		return (ft_strdup("(null)"));
 	return (ft_strdup(arg_as_str));

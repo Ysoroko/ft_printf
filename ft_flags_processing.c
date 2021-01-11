@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 15:12:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 18:11:37 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ char	*ft_next_arg_to_str(va_list *v_l, t_list *list)
 	else if (list->type_flag == '%')
 		arg_as_str = ft_percent_type_next_arg_to_str();
 	else if (list->type_flag == 's')
-		arg_as_str = ft_s_type_next_arg_to_str(v_l);
+		arg_as_str = ft_s_type_next_arg_to_str(v_l, list);
 	else if (list->type_flag == 'p')
 		arg_as_str = ft_p_type_next_arg_to_str(v_l);
 	else if (list->type_flag == 'd' || list->type_flag == 'i')
-		arg_as_str = ft_d_or_i_type_next_arg_to_str(v_l);
+		arg_as_str = ft_d_or_i_type_next_arg_to_str(v_l, list);
 	else if (list->type_flag == 'u')
-		arg_as_str = ft_u_type_next_arg_to_str(v_l);
+		arg_as_str = ft_u_type_next_arg_to_str(v_l, list);
 	else if (list->type_flag == 'x')
-		arg_as_str = ft_lowercase_x_type_next_arg_to_str(v_l);
+		arg_as_str = ft_lowercase_x_type_next_arg_to_str(v_l, list);
 	else if (list->type_flag == 'X')
-		arg_as_str = ft_uppercase_x_type_next_arg_to_str(v_l);
+		arg_as_str = ft_uppercase_x_type_next_arg_to_str(v_l, list);
 	return (arg_as_str);
 }
 
@@ -49,7 +49,9 @@ char	*ft_next_arg_to_str(va_list *v_l, t_list *list)
 ** This function processes the star_before_point and
 ** star_after_point flags, setting the width and the precision to the
 ** corresponding values
-** If the corresponding va_arg is negative, '-' flag is activated
+** If the * width < 0, '-' flag is activated and abs(width) is used
+** If the * precision < 0, it's as if the '.' flag is absent
+** (the respective field in t_list is freed and set to a NULL pointer)
 */
 
 void	ft_stars_flags_process(t_list *list, va_list *v_list)
@@ -68,13 +70,8 @@ void	ft_stars_flags_process(t_list *list, va_list *v_list)
 		list->precision = va_arg(*v_list, int);
 		if (list->precision < 0)
 		{
-			if (list->type_flag != 's')
-			{
-				list->precision = 0;
-				ft_free(&(list->after_dot), 0, 0);
-			}
-			else
-				list->precision *= -1;
+			list->precision = 0;
+			ft_free(&(list->after_dot), 0, 0);
 		}
 	}
 }
@@ -98,12 +95,13 @@ int		ft_process_list(t_list *list, va_list *v_list)
 	int		ret;
 
 	//t_print_t_list(list);
-	if ((ret = ft_check_for_errors(list, v_list)) != 0)
+	if ((ret = ft_check_for_errors(list)) != 0)
 	{
 		printf ("Error %d found in t_list\n", ret);
 		return (0);
 	}
 	ft_stars_flags_process(list, v_list);
+	ft_check_flags_for_special_combo(list);
 	if (!(printf_arg_str = ft_next_arg_to_str(v_list, list)))
 	{
 		printf ("ft_next_arg_to_str = 0\n");
@@ -111,12 +109,6 @@ int		ft_process_list(t_list *list, va_list *v_list)
 	}
 	//printf("STR_TO_PRINT: %s\n", printf_arg_str);
 	list->text_to_print = printf_arg_str;
-	if (ft_check_flags_for_special_combo(list, &printf_arg_str))
-	{
-		//printf("special combo\n");
-		ft_free(&printf_arg_str, 0, 0);
-		return (ft_strlen(list->definer_str));
-	}
 	//printf("S before w/p/0/-: %s\n", printf_arg_str);
 	if (!(str_after_w_p_z_m = ft_width_prec_zero_minus(printf_arg_str, list)))
 	{

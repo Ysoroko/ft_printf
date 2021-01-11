@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 15:18:43 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 18:18:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,14 @@ int main()
 	char	*t = "0x12345678";
 	char	*u = "-0";
 
-	/*
+	char *str = "hahahah";
+	printf("P: A|%020.*|A\n", -4, str);
+	ft_printf("F: A|%020.*|A\n", -4, str);
 	//printf("\nP:%s%d","Hi",19);
-		printf(" --- Return : %d\n", printf("P: %1.d", l)); //T23
-		ft_printf(" --- Return : %d\n", ft_printf("F: %1.d", l)); //T23
+	/*
+		printf(" --- Return : %d\n",    printf("P: %0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d", i, j, k, l, m, c, e, d)); //T23
+	 ft_printf(" --- Return : %d\n", ft_printf("F: %0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d", i, j, k, l, m, c, e, d)); //T23
 	*/
-	char *str = 0;
-	printf("R: | %d | ", printf("%s\n", str));
 	return (0);
 }
 

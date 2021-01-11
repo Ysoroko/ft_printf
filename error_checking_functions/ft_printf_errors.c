@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:52:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 13:17:12 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 18:20:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft)
 ** Returns corresponding int in case of mistake found, 0 otherwise
 */
 
-int	ft_check_for_errors(t_list *list, va_list *v_list)
+int	ft_check_for_errors(t_list *list)
 {
-	if (!list || !v_list)
+	if (!list)
 		return (-1);
 	if (list->precision && (ft_strchr("cp", list->type_flag)))
 		return (1);

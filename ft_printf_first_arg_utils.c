@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 15:04:15 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 18:02:00 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,13 +149,3 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 	}
 	return (printed);
 }
-/*
-ft_printf("F: %.d  AH\n", 0);
-		   012345678910
-i = 3%
-i +=2; strlen
-i = 5; at the end
-i = 6 at the start s[6] = ' ' //print ' '
-i = 7 //print ' '
-i = 8
-*/
