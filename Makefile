@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/11 12:45:45 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/11 15:11:56 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC				=	ft_printf.c \
 					./next_arg_to_str_functions/ft_width_prec_zero_minus.c \
 					\
 					./printf_utils/ft_atoi_for_printf.c \
-					./printf_utils/ft_printf_utils.c 
+					./printf_utils/ft_printf_utils.c \
+					./printf_utils/ft_replace_alloc.c
 
 
 BONUS			=	ft_lstadd_back.c \
@@ -59,7 +60,8 @@ OBJS			=	ft_printf.o \
 					ft_width_prec_zero_minus.o \
 					\
 					ft_atoi_for_printf.o \
-					ft_printf_utils.o 
+					ft_printf_utils.o \
+					ft_replace_alloc.o
 
 NAME			=	libftprintf.a
 

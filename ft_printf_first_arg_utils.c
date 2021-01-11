@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 12:44:42 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:04:15 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,26 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 			if (!(list_ret = (ft_process_list(list, v_l))))
 				return (ft_free(&temp, 0, &list));
 			i += list_ret;
-			printed += (int)ft_strlen(list->text_to_print);
+			printed += list->chars_printed;
 			ft_free(&temp, 0, &list);
+			if (!(s[i]))
+				return (printed);
 		}
-		ft_putchar_fd(s[i], FD);
-		printed++;
+		else
+		{
+			ft_putchar_fd(s[i], FD);
+			printed++;
+		}
 	}
 	return (printed);
 }
+/*
+ft_printf("F: %.d  AH\n", 0);
+		   012345678910
+i = 3%
+i +=2; strlen
+i = 5; at the end
+i = 6 at the start s[6] = ' ' //print ' '
+i = 7 //print ' '
+i = 8
+*/

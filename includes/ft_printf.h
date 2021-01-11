@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:14:54 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:17:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_str_with_flags_list
 	int					width;
 	char				*star_after_point;
 	char				type_flag;
+	int					chars_printed;
 	char				*text_to_print;
 }				t_list;
 
@@ -61,7 +62,7 @@ int		ft_analyze_first_printf_argument(const char *str, va_list *v_list);
 int		ft_wrong_order_of_flags(char *before_dot, char *after_dot);
 int		ft_check_for_errors(t_list *list, va_list *v_list);
 int		ft_too_many_flag_chars_in_str(char *all, char *bef, char *aft);
-int		ft_check_flags_for_special_combo(t_list *list);
+int		ft_check_flags_for_special_combo(t_list *list, char **next_arg_as_str);
 
 /*
 ** Libft Utils
@@ -111,6 +112,7 @@ int		ft_number_of_c_char_in_str(char *str, char c);
 int		ft_atoi_p(const char *str);
 t_list	*ft_lstnew(void);
 int		ft_free(char **ptr1, char **ptr2, t_list **list);
+char	*ft_replace_alloc(char **str_to_replace, char *replace_by);
 
 //TO DELETE
 void	ft_print_t_list(t_list *list);

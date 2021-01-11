@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:12:43 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int		ft_process_list(t_list *list, va_list *v_list)
 	char	*str_after_w_p_z_m;
 	int		ret;
 
-	//ft_print_t_list(list);
+	//t_print_t_list(list);
 	if ((ret = ft_check_for_errors(list, v_list)) != 0)
 	{
 		printf ("Error %d found in t_list\n", ret);
@@ -111,11 +111,11 @@ int		ft_process_list(t_list *list, va_list *v_list)
 	}
 	//printf("STR_TO_PRINT: %s\n", printf_arg_str);
 	list->text_to_print = printf_arg_str;
-	if (ft_check_flags_for_special_combo(list))
+	if (ft_check_flags_for_special_combo(list, &printf_arg_str))
 	{
 		//printf("special combo\n");
 		ft_free(&printf_arg_str, 0, 0);
-		return (ft_strlen(list->definer_str) + 1);
+		return (ft_strlen(list->definer_str));
 	}
 	//printf("S before w/p/0/-: %s\n", printf_arg_str);
 	if (!(str_after_w_p_z_m = ft_width_prec_zero_minus(printf_arg_str, list)))
@@ -125,6 +125,7 @@ int		ft_process_list(t_list *list, va_list *v_list)
 	}
 	//printf("S after w/p/0/-: %s\n", str_after_w_p_z_m);
 	ft_putstr_fd(str_after_w_p_z_m, FD);
+	list->chars_printed = (int)ft_strlen(str_after_w_p_z_m);
 	ft_free(&printf_arg_str, &str_after_w_p_z_m, 0);
-	return (ft_strlen(list->definer_str) + 1);
+	return (ft_strlen(list->definer_str));
 }

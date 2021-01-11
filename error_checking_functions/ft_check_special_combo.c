@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 12:39:49 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 12:33:35 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:22:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,12 @@
 ** 2: A 's' type with no precision but a '.' present in definer string
 */
 
-int	ft_check_flags_for_special_combo(t_list *list)
+int	ft_check_flags_for_special_combo(t_list *list, char **next_arg_as_str)
 {
-	int	temp;
-
-	if (!list)
+	if (!list || !next_arg_as_str || !*next_arg_as_str)
 		return (-1);
 	if (!list->precision && list->after_dot && list->type_flag == 's')
-	{
-		temp = list->width + 1;
-		while (--temp)
-			ft_putchar_fd(' ', FD);
-		return (2);
-	}
+		*next_arg_as_str = ft_replace_alloc(next_arg_as_str, "");
 	if (list->precision && list->type_flag == 's' &&
 		list->precision >= (int)ft_strlen(list->text_to_print))
 		list->precision = 0;
@@ -54,12 +47,14 @@ int	ft_check_flags_for_special_combo(t_list *list)
 	if (!ft_strcmp(list->text_to_print, "(null)"))
 	{
 		ft_putstr_fd(list->text_to_print, FD);
+		list->chars_printed = ft_strlen("(null)");
 		return (1);
 	}
 	if (ft_strchr("diuxX", list->type_flag) && list->after_dot &&
 		!list->precision && !ft_strcmp("0", list->text_to_print))
 	{
 		ft_putstr_fd("", FD);
+		list->chars_printed = 1;
 		return (3);
 	}
 	return (0);
