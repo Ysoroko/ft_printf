@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 12:38:56 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/09 15:19:57 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 /*
 ** A modified version which only returns !0 if both strings are the same,

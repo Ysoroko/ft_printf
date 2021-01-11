@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 15:32:38 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 /*
 ** FT_NEXT_ARG_TO_STR
@@ -71,7 +71,7 @@ void	ft_stars_flags_process(t_list *list, va_list *v_list)
 			if (list->type_flag != 's')
 			{
 				list->precision = 0;
-				list->after_dot = 0;
+				ft_free(&(list->after_dot), 0, 0);
 			}
 			else
 				list->precision *= -1;

@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:31:36 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/06 11:55:29 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static char	*ft_strcpy(char *dest, const char *src)
 {

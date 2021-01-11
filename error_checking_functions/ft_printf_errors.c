@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:52:26 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 13:37:56 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:09:38 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 /*
 ** FT_TOO_MANY_FLAG_CHARS_IN_STR

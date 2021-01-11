@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 12:39:49 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 13:20:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:09:33 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 /*
 ** FT_CHECK_FLAGS_FOR_SPECIAL_COMBO

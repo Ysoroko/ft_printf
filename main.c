@@ -6,11 +6,11 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/10 15:18:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 /* 
 ** PRINTF ARGUMENTS STRUCTURE
@@ -23,12 +23,16 @@ int main()
 	char *hello = "coucou";
 	unsigned	int u = 2456789;
 
-	//ft_printf("F: %0*.*xCouco%%u %0*.*s \n", -12, 12, -245678, -20, 15, "Test2");
-	//printf("P: %0*.*xCouco%%u %*.*s \n", -12, 12, -245678, -20, 15, "Test2");
 	while (1)
 	{
 		ft_printf("F: %0*.*xCouco%%u %0*.*s \n", -12, 12, -245678, -20, 15, "Test2");
+		printf("P: %0*.*xCouco%%u %*.*s \n", -12, 12, -245678, -20, 15, "Test2");
 	}
+	//ft_printf("%.*x\n", -25, -245678);
+	//printf("%.*x\n", -25, -245678);
+
+	printf("%0*d", 8, -18);
+
 	return (0);
 }
 
