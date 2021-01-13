@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 15:36:48 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 17:48:05 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,10 @@ int		ft_process_list(t_list *list, va_list *v_list)
 {
 	char	*printf_arg_str;
 	char	*str_after_w_p_z_m;
-	int		ret;
 
-	//ft_print_t_list(list);
 	ft_stars_flags_process(list, v_list);
 	ft_check_flags_for_special_combo(list);
+	//ft_print_t_list(list);
 	if (!(printf_arg_str = ft_next_arg_to_str(v_list, list)))
 	{
 		printf ("ft_next_arg_to_str = 0\n");

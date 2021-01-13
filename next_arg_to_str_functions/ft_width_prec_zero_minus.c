@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 15:34:55 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 18:29:52 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 
 	precision = list->precision;
 	if (!precision || (list->precision &&
-		list->precision <= (int)ft_strlen(str_to_format)))
+		list->precision <= ft_count_n_digits(str_to_format)))
 		return (ft_strdup(str_to_format));
 	ret_str = 0;
 	if (ft_strchr(str_to_format, '-'))
@@ -118,8 +118,6 @@ char	*ft_process_minus_flag(char *width_str, char *prec_str, t_list *list)
 	int		i;
 	int		j;
 
-	if (!prec_str || !list)
-		return (0);
 	if (!width_str)
 		return (ft_strdup(prec_str));
 	if (list->minus_flag)
@@ -162,13 +160,7 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	ret = 0;
 	width_str = 0;
 	prec_str = 0;
-	//printf("W to S before:\n");
-	if (width && width > precision && width > (int)ft_strlen(str))
-	{
-		if (!(width_str = ft_width_and_zero_to_str(list)))
-			return (0);
-	}
-	//printf("W to S result: %s\n", width_str);
+	
 	if (list->type_flag == 's')
 		prec_str = ft_precision_s_type_to_str(str, list);
 	else if (list->type_flag != 's')
@@ -178,6 +170,13 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 		ft_free(&width_str, 0, 0);
 		return (0);
 	}
+	//printf("Prec_str: |%s|\n", prec_str);
+	if (width && (width >= precision) && (width > (int)ft_strlen(prec_str)))
+	{
+		if (!(width_str = ft_width_and_zero_to_str(list)))
+			return (0);
+	}
+	//printf("W to S result: |%s|\n", width_str);
 	ret = ft_process_minus_flag(width_str, prec_str, list);
 	ft_free(&width_str, &prec_str, 0);
 	//printf("Returning ret as :%s\n", ret);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 15:37:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 18:27:06 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int main()
 
 	char *str = "JE SUIS UN STRING";
 
-	ft_printf("F: %.*s ca %*p\n", 0, "Test2", 0, str);
-	printf("P: %.*s ca %*p\n", 0, "Test2", 0, str);
+	ft_printf("F: |%*.*s|\n", -2, 3, "4");
+	printf("P: |%*.*s|\n", -2, 3, "4");
 	//printf("\nP:%s%d","Hi",19);
 	/*
 		printf(" --- Return : %d\n",    printf("P: %0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d", i, j, k, l, m, c, e, d)); //T23

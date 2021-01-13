@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 13:06:00 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 16:08:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ char	*ft_uitoa_base(unsigned int n, char *base);
 char	*ft_ultoa_base(unsigned long n, char *base);
 
 int		ft_strcmp(char *s1, char *s2);
+int		ft_count_n_digits(char *str);
 
 /*
 ** Next Arg To Str Functions
@@ -111,6 +112,7 @@ int		ft_atoi_p(const char *str);
 t_list	*ft_lstnew(void);
 int		ft_free(char **ptr1, char **ptr2, t_list **list);
 char	*ft_replace_alloc(char **str_to_replace, char *replace_by);
+
 
 //TO DELETE
 void	ft_print_t_list(t_list *list);
