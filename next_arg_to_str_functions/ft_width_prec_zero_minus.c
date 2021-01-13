@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 18:03:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 15:34:55 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,16 @@ char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
 	char	*ret_str;
 	int		i;
 
-	if (!str_to_format || !list)
-		return (0);
 	if (!list->precision || list->precision >= (int)ft_strlen(str_to_format))
 		return (ft_strdup(str_to_format));
 	if (!(ret_str = ft_char_alloc(list->precision, ' ')))
 		return (0);
-	i = -1;
-	while (ret_str[++i] && str_to_format[i])
+	i = 0;
+	while (ret_str[i] && str_to_format[i])
+	{
 		ret_str[i] = str_to_format[i];
+		i++;
+	}
 	return (ret_str);
 }
 
@@ -77,14 +78,10 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 	int		i;
 	int		j;
 	int		precision;
-	int		minus;
 
-	if (!str_to_format || !list)
-		return (0);
 	precision = list->precision;
-	minus = 0;
-	if (!precision || (list->precision && list->type_flag != 's' &&
-		list->precision <= (int)ft_strlen(list->text_to_print)))
+	if (!precision || (list->precision &&
+		list->precision <= (int)ft_strlen(str_to_format)))
 		return (ft_strdup(str_to_format));
 	ret_str = 0;
 	if (ft_strchr(str_to_format, '-'))
@@ -127,9 +124,12 @@ char	*ft_process_minus_flag(char *width_str, char *prec_str, t_list *list)
 		return (ft_strdup(prec_str));
 	if (list->minus_flag)
 	{
-		i = -1;
-		while (prec_str[++i] && width_str[i])
+		i = 0;
+		while (prec_str[i] && width_str[i])
+		{
 			width_str[i] = prec_str[i];
+			i++;
+		}
 	}
 	else
 	{
@@ -138,7 +138,9 @@ char	*ft_process_minus_flag(char *width_str, char *prec_str, t_list *list)
 		i = ft_strlen(prec_str) + 1;
 		j = ft_strlen(width_str) + 1;
 		while (--i > -1 && --j > -1)
+		{
 			width_str[j] = prec_str[i];
+		}
 		if (list->zero_flag && prec_str[0] == '-')
 			width_str[0] = '-';
 	}
@@ -150,8 +152,8 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	char			*width_str;
 	char			*prec_str;
 	char			*ret;
-	unsigned int	width;
-	unsigned int	precision;
+	int				width;
+	int				precision;
 
 	if (!str || !list)
 		return (0);
@@ -160,9 +162,12 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	ret = 0;
 	width_str = 0;
 	prec_str = 0;
-	if (width && (!(width <= precision) || !(width <= (unsigned int)ft_strlen(str))))
+	//printf("W to S before:\n");
+	if (width && width > precision && width > (int)ft_strlen(str))
+	{
 		if (!(width_str = ft_width_and_zero_to_str(list)))
 			return (0);
+	}
 	//printf("W to S result: %s\n", width_str);
 	if (list->type_flag == 's')
 		prec_str = ft_precision_s_type_to_str(str, list);

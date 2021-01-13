@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 18:11:37 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 15:36:48 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_stars_flags_process(t_list *list, va_list *v_list)
 		if (list->precision < 0)
 		{
 			list->precision = 0;
-			ft_free(&(list->after_dot), 0, 0);
+			list->after_dot = 0;
 		}
 	}
 }
@@ -94,12 +94,7 @@ int		ft_process_list(t_list *list, va_list *v_list)
 	char	*str_after_w_p_z_m;
 	int		ret;
 
-	//t_print_t_list(list);
-	if ((ret = ft_check_for_errors(list)) != 0)
-	{
-		printf ("Error %d found in t_list\n", ret);
-		return (0);
-	}
+	//ft_print_t_list(list);
 	ft_stars_flags_process(list, v_list);
 	ft_check_flags_for_special_combo(list);
 	if (!(printf_arg_str = ft_next_arg_to_str(v_list, list)))

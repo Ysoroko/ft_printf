@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/11 15:11:56 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/13 14:05:16 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRC				=	ft_printf.c \
 					ft_printf_first_arg_utils.c \
 					ft_flags_processing.c \
 					\
-					./error_checking_functions/ft_printf_errors.c \
 					./error_checking_functions/ft_check_special_combo.c \
 					\
 					./libft_utils/ft_itoa.c \
@@ -35,7 +34,6 @@ SRC				=	ft_printf.c \
 					\
 					./printf_utils/ft_atoi_for_printf.c \
 					./printf_utils/ft_printf_utils.c \
-					./printf_utils/ft_replace_alloc.c
 
 
 BONUS			=	ft_lstadd_back.c \
@@ -44,7 +42,6 @@ OBJS			=	ft_printf.o \
 					ft_printf_first_arg_utils.o \
 					ft_flags_processing.o \
 					\
-					ft_printf_errors.o \
 					ft_check_special_combo.o \
 					\
 					ft_itoa.o \
@@ -60,8 +57,7 @@ OBJS			=	ft_printf.o \
 					ft_width_prec_zero_minus.o \
 					\
 					ft_atoi_for_printf.o \
-					ft_printf_utils.o \
-					ft_replace_alloc.o
+					ft_printf_utils.o 
 
 NAME			=	libftprintf.a
 
@@ -85,8 +81,9 @@ clean:
 fclean:		clean
 			@ rm -f $(NAME)
 
-aclean:		fclean
-			@ rm -f a.out test1.txt test2.txt
+aclean:		fclean 
+			@ rm -rf main.dSYM
+			@ rm -f a.out test1.txt test2.txt main \
 
 re:			fclean all
 

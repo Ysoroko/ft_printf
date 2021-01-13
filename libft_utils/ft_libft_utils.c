@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 15:18:25 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 12:31:41 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 15:28:28 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	ft_strlen(const char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 		i++;
 	return (i);
 }
@@ -59,12 +59,12 @@ char	*ft_strchr(const char *str, int c)
 		return (0);
 	my_str = (char *)(str);
 	i = -1;
-	while (my_str[++i] != '\0')
+	while (my_str[++i])
 	{
 		if (my_str[i] == c)
-			return (&my_str[i]);
+			return (&(my_str[i]));
 	}
 	if (my_str[i] == c)
-		return (&my_str[i]);
+		return (&(my_str[i]));
 	return (0);
 }

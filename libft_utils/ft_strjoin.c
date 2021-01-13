@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 11:51:24 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 11:10:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 15:29:07 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strjoin(char const *pref, char const *suff)
 	ret = malloc(sizeof(char) * (ft_strlen(my_pref) + ft_strlen(my_suff) + 1));
 	if (ret == 0)
 		return (0);
-	while (pref[++i] != '\0')
+	while (pref[++i])
 		ret[i] = pref[i];
 	while (suff[++j] != '\0')
 	{

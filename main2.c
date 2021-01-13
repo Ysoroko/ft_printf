@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:59:49 by ldelmas           #+#    #+#             */
-/*   Updated: 2021/01/11 11:12:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 14:12:08 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int main()
 	file1 = fopen("test1.txt", "w+");
 	file2 = fopen("test2.txt", "w+");
 	change_fdout(&dpl, &fd);
-
+	/*
 	use_colors("TEST : NO FLAGS -------- FORMATS '%sxXpd' :     ", (void*)0);
 	ft_printf("%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);
@@ -502,7 +502,7 @@ int main()
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "* = 0");
 	ft_printf("%-*.15xCouco%%u %.*s ca %*pva?%-*.30X  %-*.12d\n", 0, -245678, 0, "Test2", 0, hello, 0, u, 0, -123456);
 	fprintf(file2, "%-*.15xCouco%%u %.*s ca %*pva?%-*.30X  %-*.12d\n", 0, -245678, 0, "Test2", 0, hello, 0 , u, 0, -123456);	
-
+	*/
 
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS '-*.0VAL' -------- FORMATS 'xXd' :", "* > 0");
 	ft_printf("%-*.015xCouco%%u %.*s ca %*pva?%-*.030X  %-*.012d\n", 25, -245678, 20, "Test2", 25, hello, 25 ,u, 12, -123456);

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:25:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 14:41:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 15:38:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ t_list	*ft_lstnew(void)
 	pnt->minus_flag = 0;
 	pnt->star_before_point = 0;
 	pnt->zero_flag = 0;
-	pnt->point_flag = 0;
 	pnt->precision = 0;
 	pnt->width = 0;
 	pnt->star_after_point = 0;
@@ -132,8 +131,6 @@ int		ft_free(char **ptr1, char **ptr2, t_list **list)
 	{
 		free((*list)->before_dot);
 		(*list)->before_dot = 0;
-		free((*list)->after_dot);
-		(*list)->after_dot = 0;
 		free(*list);
 		*list = 0;
 	}

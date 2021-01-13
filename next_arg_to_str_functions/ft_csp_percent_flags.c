@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/11 17:37:23 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/13 15:34:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ char	*ft_s_type_next_arg_to_str(va_list *v_l, t_list *list)
 {
 	char *arg_as_str;
 
-	if (!list->precision && list->after_dot)
-		return (ft_strdup(""));
 	if (!(arg_as_str = va_arg(*v_l, char *)))
 		return (ft_strdup("(null)"));
+	if (!list->precision && list->after_dot)
+		return (ft_strdup(""));
 	return (ft_strdup(arg_as_str));
 }
 
@@ -65,7 +65,7 @@ char	*ft_p_type_next_arg_to_str(va_list *v_l)
 	arg_as_str = 0;
 	address = va_arg(*v_l, void *);
 	address_to_ulong = (unsigned long)address;
-	if (!address_to_ulong)
+	if (!address_to_ulong || !address)
 		return (ft_strdup("0x"));
 	if (!(temp = ft_ultoa_base(address_to_ulong, BASE_LX)))
 		return (0);
