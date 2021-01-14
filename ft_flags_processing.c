@@ -6,11 +6,34 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 12:04:44 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:57:57 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	ft_print_result(char *s, t_list *list)
+{
+	int		chars_printed;
+	char	z;
+
+	z = 0;
+	chars_printed = (int)ft_strlen(s);
+	if (list->text_to_print[0] == 0 && list->type_flag == 'c'
+		&& list->minus_flag)
+	{
+		write(1, &z, FD);
+		chars_printed++;
+	}
+	ft_putstr_fd(s, FD);
+	if (list->text_to_print[0] == 0 && list->type_flag == 'c'
+		&& !list->minus_flag)
+	{
+		write(1, &z, FD);
+		chars_printed++;
+	}
+	list->chars_printed = chars_printed;
+}
 
 /*
 ** FT_NEXT_ARG_TO_STR
@@ -20,7 +43,7 @@
 ** Returns the resulting string
 */
 
-char	*ft_next_arg_to_str(va_list *v_l, t_list *list)
+char		*ft_next_arg_to_str(va_list *v_l, t_list *list)
 {
 	char *arg_as_str;
 
@@ -54,7 +77,7 @@ char	*ft_next_arg_to_str(va_list *v_l, t_list *list)
 ** (the respective field in t_list is freed and set to a NULL pointer)
 */
 
-void	ft_stars_flags_process(t_list *list, va_list *v_list)
+void		ft_stars_flags_process(t_list *list, va_list *v_list)
 {
 	if (list->star_before_point)
 	{
@@ -88,7 +111,7 @@ void	ft_stars_flags_process(t_list *list, va_list *v_list)
 ** Returns the length of the definer string (%xxxxxs)
 */
 
-int		ft_process_list(t_list *list, va_list *v_list)
+int			ft_process_list(t_list *list, va_list *v_list)
 {
 	char	*printf_arg_str;
 	char	*str_after_w_p_z_m;
@@ -110,8 +133,7 @@ int		ft_process_list(t_list *list, va_list *v_list)
 		return (ft_free(&printf_arg_str, 0, 0));
 	}
 	//printf("S after w/p/0/-: %s\n", str_after_w_p_z_m);
-	ft_putstr_fd(str_after_w_p_z_m, FD);
-	list->chars_printed = (int)ft_strlen(str_after_w_p_z_m);
+	ft_print_result(str_after_w_p_z_m, list);
 	ft_free(&printf_arg_str, &str_after_w_p_z_m, 0);
 	return (ft_strlen(list->definer_str));
 }

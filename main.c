@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 12:12:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:57:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 //!!!!!!!!!!!!!!!!!!!!!printf("%020.8%") works (with 'c' it doesn't!!!);
 int main()
 {
-	int		a = 12;
 	int		b = 0;
 	char	c = 'a';
 	int		d = 2147483647;
@@ -45,10 +44,12 @@ int main()
 	char *str = "JE SUIS UN STRING";
 	str = 0;
 
+	int a = 0;
 
 	//'	\0' char issue
-	printf("P: |%d|\n\n",printf(""));
-	ft_printf("F: |%d|\n\n",ft_printf(""));
+	printf("P: |%d|\n\n",printf("P: |%*c|\n", a, 0));
+	ft_printf("F: |%d|\n\n",ft_printf("F: |%*c|\n", a, 0));
+
 
 
 	/*

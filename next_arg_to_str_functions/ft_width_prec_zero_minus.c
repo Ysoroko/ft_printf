@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 12:05:49 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:56:20 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_width_and_zero_to_str(t_list *list)
 		fill_in_char = ' ';
 	if (!(ret_str = ft_char_alloc(list->width, fill_in_char)))
 		return (0);
+	if (list->text_to_print[0] == 0 && list->type_flag == 'c' && list->width)
+		ret_str[list->width - 1] = 0;
 	if (ft_strchr(list->text_to_print, '-') && fill_in_char == '0')
 		ret_str[0] = '-';
 	return (ret_str);

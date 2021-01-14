@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 12:07:03 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:26:13 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ char	*ft_c_type_next_arg_to_str(va_list *v_l)
 {
 	char	*ret_str;
 	char	arg_as_char;
+	char	zero;
+
+	zero = 0;
 
 	if (!(arg_as_char = (char)va_arg(*v_l, int)))
 		return (ft_strdup(""));
