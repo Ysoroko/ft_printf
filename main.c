@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 18:27:06 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 10:47:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 //!!!!!!!!!!!!!!!!!!!!!printf("%020.8%") works (with 'c' it doesn't!!!);
 int main()
 {
-	int		a = -4;
+	int		a = 12;
 	int		b = 0;
 	char	c = 'a';
 	int		d = 2147483647;
@@ -43,14 +43,21 @@ int main()
 	char	*u = "-0";
 
 	char *str = "JE SUIS UN STRING";
+	str = 0;
 
-	ft_printf("F: |%*.*s|\n", -2, 3, "4");
-	printf("P: |%*.*s|\n", -2, 3, "4");
-	//printf("\nP:%s%d","Hi",19);
+
+	//'	\0' char issue
+	printf("\nP: |%d|\n\n",printf("P: |%1c|", 0));
+	ft_printf("F: |%d|\n\n",ft_printf("F: |%1c|\n", 0));
+
+
 	/*
-		printf(" --- Return : %d\n",    printf("P: %0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d", i, j, k, l, m, c, e, d)); //T23
-	 ft_printf(" --- Return : %d\n", ft_printf("F: %0.i, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d, %0.d", i, j, k, l, m, c, e, d)); //T23
+	PRINT(" --- Return : %d\n", PRINT("%c, %-c, %12c, %-3c, %-1c, %1c, %-2c, %-4c, %5c, %3c, %-*c, %-*c, %*c, %*c", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0));
+	PRINT(" --- Return : %d\n", PRINT("(null)"));
+	ft_printf("F: |%p|\n", str);
+	printf("P: |%p|\n", str);
 	*/
+	
 	return (0);
 }
 

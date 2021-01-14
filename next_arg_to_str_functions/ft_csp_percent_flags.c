@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 18:07:05 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 10:52:18 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,16 @@
 
 char	*ft_c_type_next_arg_to_str(va_list *v_l)
 {
-	char *arg_as_str;
+	char	*ret_str;
+	char	arg_as_char;
 
-	arg_as_str = 0;
-	if (!(arg_as_str = ft_char_alloc(1, '0')))
+	arg_as_char = (char)va_arg(*v_l, int);
+	if (!arg_as_char)
+		return (ft_strdup(""));
+	if (!(ret_str = ft_char_alloc(sizeof(char), '0')))
 		return (0);
-	arg_as_str[0] = (char)va_arg(*v_l, int);
-	return (arg_as_str);
+	ret_str[0] = arg_as_char;
+	return (ret_str);
 }
 
 char	*ft_percent_type_next_arg_to_str(void)
@@ -66,7 +69,7 @@ char	*ft_p_type_next_arg_to_str(va_list *v_l)
 	address = va_arg(*v_l, void *);
 	address_to_ulong = (unsigned long)address;
 	if (!address_to_ulong || !address)
-		return (ft_strdup("0x"));
+		return (ft_strdup("0x0"));
 	if (!(temp = ft_ultoa_base(address_to_ulong, BASE_LX)))
 		return (0);
 	arg_as_str = ft_strjoin("0x", temp);
