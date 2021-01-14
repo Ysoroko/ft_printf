@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 15:37:46 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:14:56 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 	{
 		if (s[i] == '%')
 		{
+			//printf("going to ft_extract_str\n");
 			if (!(temp = ft_extract_str(&(s[i + 1]), TYPE_CHARS)))
 				return (0);
 			//printf("going to ft_flags_to_list\n");
@@ -124,6 +125,7 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 			//printf("going to ft_process_list\n");
 			if (!(list_ret = (ft_process_list(list, v_l))))
 				return (ft_free(&temp, 0, &list));
+			//printf("out of ft_process_list\n");
 			i += list_ret;
 			printed += list->chars_printed;
 			ft_free(&temp, 0, &list);

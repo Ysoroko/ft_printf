@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 16:57:40 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 10:52:18 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:07:03 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ char	*ft_c_type_next_arg_to_str(va_list *v_l)
 	char	*ret_str;
 	char	arg_as_char;
 
-	arg_as_char = (char)va_arg(*v_l, int);
-	if (!arg_as_char)
+	if (!(arg_as_char = (char)va_arg(*v_l, int)))
 		return (ft_strdup(""));
-	if (!(ret_str = ft_char_alloc(sizeof(char), '0')))
+	if (!(ret_str = ft_char_alloc(1, '0')))
 		return (0);
 	ret_str[0] = arg_as_char;
 	return (ret_str);
@@ -51,10 +50,11 @@ char	*ft_s_type_next_arg_to_str(va_list *v_l, t_list *list)
 {
 	char *arg_as_str;
 
-	if (!(arg_as_str = va_arg(*v_l, char *)))
-		return (ft_strdup("(null)"));
+	arg_as_str = va_arg(*v_l, char *);
 	if (!list->precision && list->after_dot)
 		return (ft_strdup(""));
+	if (!(arg_as_str))
+		return (ft_strdup("(null)"));
 	return (ft_strdup(arg_as_str));
 }
 

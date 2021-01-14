@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:27:46 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 13:58:10 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:14:44 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_printf(const char *str, ...)
 
 	if (!str)
 		return (-1);
+	if (!str[0])
+		return (0);
 	va_start(v_list, str);
 	if (!(ret = ft_analyze_first_printf_argument(str, &v_list)))
 		ret = -1;

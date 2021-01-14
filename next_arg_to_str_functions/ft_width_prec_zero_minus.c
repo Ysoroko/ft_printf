@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 10:52:55 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/14 12:05:49 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ char	*ft_precision_to_str(char *str_to_format, t_list *list)
 		precision++;
 	if (!(ret_str = ft_char_alloc(precision, '0')))
 		return (0);
-	i = ft_strlen(str_to_format);
-	j = ft_strlen(ret_str);
+	i = ft_strlen(str_to_format) + 1;
+	j = ft_strlen(ret_str) + 1;
 	while (--i >= 0 && --j >= 0)
 		ret_str[j] = str_to_format[i];
 	if (ft_strchr(str_to_format, '-'))
@@ -136,8 +136,8 @@ char	*ft_process_minus_flag(char *width_str, char *prec_str, t_list *list)
 	{
 		if (list->zero_flag && prec_str[0] == '-')
 			prec_str[0] = '0';
-		i = ft_strlen(prec_str);
-		j = ft_strlen(width_str);
+		i = ft_strlen(prec_str) + 1;
+		j = ft_strlen(width_str) + 1;
 		while (--i > -1 && --j > -1)
 		{
 			width_str[j] = prec_str[i];
@@ -182,7 +182,5 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	ret = ft_process_minus_flag(width_str, prec_str, list);
 	ft_free(&width_str, &prec_str, 0);
 	//printf("Returning ret as :%s\n", ret);
-	if (!ft_strcmp(list->text_to_print, "") && list->type_flag == 'c')
-		ret[list->width] = 0;
 	return (ret);
 }
