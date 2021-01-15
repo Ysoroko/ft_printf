@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/15 16:07:45 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/15 19:12:24 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,21 @@ char		*ft_next_arg_to_str(va_list *v_l, t_list *list)
 
 	arg_as_str = 0;
 	if (list->type_flag == 'c')
-		arg_as_str = ft_c_type_next_arg_to_str(v_l);
+		arg_as_str = ft_c_to_str(v_l);
 	else if (list->type_flag == '%')
-		arg_as_str = ft_percent_type_next_arg_to_str();
+		arg_as_str = ft_percent_to_str();
 	else if (list->type_flag == 's')
-		arg_as_str = ft_s_type_next_arg_to_str(v_l, list);
+		arg_as_str = ft_s_to_str(v_l, list);
 	else if (list->type_flag == 'p')
-		arg_as_str = ft_p_type_next_arg_to_str(v_l, list);
+		arg_as_str = ft_p_to_str(v_l, list);
 	else if (list->type_flag == 'd' || list->type_flag == 'i')
-		arg_as_str = ft_d_or_i_type_next_arg_to_str(v_l, list);
+		arg_as_str = ft_d_or_i_to_str(v_l, list);
 	else if (list->type_flag == 'u')
-		arg_as_str = ft_u_type_next_arg_to_str(v_l, list);
+		arg_as_str = ft_u_to_str(v_l, list);
 	else if (list->type_flag == 'x')
-		arg_as_str = ft_lowercase_x_type_next_arg_to_str(v_l, list);
+		arg_as_str = ft_lowercase_x_to_str(v_l, list);
 	else if (list->type_flag == 'X')
-		arg_as_str = ft_uppercase_x_type_next_arg_to_str(v_l, list);
+		arg_as_str = ft_uppercase_x_to_str(v_l, list);
 	return (arg_as_str);
 }
 
@@ -117,22 +117,12 @@ int			ft_process_list(t_list *list, va_list *v_list)
 	char	*str_after_w_p_z_m;
 
 	ft_stars_flags_process(list, v_list);
-	ft_check_flags_for_special_combo(list);
-	//ft_print_t_list(list);
+	ft_check_if_zero_flag_is_ignored(list);
 	if (!(printf_arg_str = ft_next_arg_to_str(v_list, list)))
-	{
-		printf ("ft_next_arg_to_str = 0\n");
 		return (0);
-	}
-	//printf("STR_TO_PRINT: |%s|\n", printf_arg_str);
 	list->text_to_print = printf_arg_str;
-	//printf("S before w/p/0/-: |%s|\n", printf_arg_str);
 	if (!(str_after_w_p_z_m = ft_width_prec_zero_minus(printf_arg_str, list)))
-	{
-		printf("ft_width_prec_zero_minus = 0\n");
 		return (ft_free(&printf_arg_str, 0, 0));
-	}
-	//printf("S after w/p/0/-: |%s|\n", str_after_w_p_z_m);
 	ft_print_result(str_after_w_p_z_m, list);
 	ft_free(&printf_arg_str, &str_after_w_p_z_m, 0);
 	return (1);

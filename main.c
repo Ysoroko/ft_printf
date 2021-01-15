@@ -6,11 +6,12 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/15 16:19:42 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/15 19:14:30 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 /* 
 ** PRINTF ARGUMENTS STRUCTURE
@@ -47,8 +48,8 @@ int main()
 	int a = 0;
 
 	//'	\0' char issue
-	printf("P: |%d|\n",printf("|%8p|\n", str));
-	ft_printf("F: |%d|\n",ft_printf("|%8p|\n", str));
+	printf("P: hhh\n");
+	ft_printf("F: hhh\n");
 
 
 
