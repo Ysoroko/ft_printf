@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 12:14:56 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/15 15:27:27 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 {
 	int		i;
 	int		printed;
-	int		list_ret;
 	t_list	*list;
 	char	*temp;
 
@@ -123,10 +122,10 @@ int			ft_analyze_first_printf_argument(const char *s, va_list *v_l)
 			if (!(list = ft_flags_to_list(temp)))
 				return (ft_free(&temp, 0, 0));
 			//printf("going to ft_process_list\n");
-			if (!(list_ret = (ft_process_list(list, v_l))))
+			if (!(ft_process_list(list, v_l)))
 				return (ft_free(&temp, 0, &list));
 			//printf("out of ft_process_list\n");
-			i += list_ret;
+			i += (int)ft_strlen(list->definer_str);
 			printed += list->chars_printed;
 			ft_free(&temp, 0, &list);
 			if (!(s[i]))

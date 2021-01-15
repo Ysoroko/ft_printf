@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 09:01:27 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 12:57:13 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/15 16:19:42 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int main()
 	int a = 0;
 
 	//'	\0' char issue
-	printf("P: |%d|\n\n",printf("P: |%*c|\n", a, 0));
-	ft_printf("F: |%d|\n\n",ft_printf("F: |%*c|\n", a, 0));
+	printf("P: |%d|\n",printf("|%8p|\n", str));
+	ft_printf("F: |%d|\n",ft_printf("|%8p|\n", str));
 
 
 

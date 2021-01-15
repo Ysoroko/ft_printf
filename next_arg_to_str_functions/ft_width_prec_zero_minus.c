@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/14 12:56:20 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/15 16:49:47 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,7 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	int				width;
 	int				precision;
 
-	if (!str || !list)
-		return (0);
+	//ft_print_t_list(list);
 	width = list->width;
 	precision = list->precision;
 	ret = 0;

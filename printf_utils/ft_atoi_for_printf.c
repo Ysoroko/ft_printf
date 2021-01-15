@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:31:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/13 11:20:58 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/15 15:34:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int				ft_atoi_p(const char *str)
 	number = 0;
 	extreme = 0;
 	my_str = (char *)(str);
-	while (ft_char_is_in_charset(my_str[i], ".*-"))
+	while (ft_char_is_in_charset(my_str[i], "0.*-"))
 		i++;
 	while (my_str[i] >= '0' && my_str[i] <= '9')
 	{
