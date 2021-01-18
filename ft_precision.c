@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:09:59 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/18 10:21:09 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 19:03:25 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** Returns the result or 0 malloc fails
 */
 
-char			*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
+static	char	*ft_precision_s_type_to_str(char *str_to_format, t_list *list)
 {
 	char	*ret_str;
 	int		i;
@@ -70,7 +70,7 @@ static int		ft_determine_c_max(char *str_to_format, t_list *list)
 ** Returns the result or 0 if malloc fails
 */
 
-char			*ft_precision_to_str(char *str_to_format, t_list *list)
+static	char	*ft_precision_to_str(char *str_to_format, t_list *list)
 {
 	char	*ret_str;
 	int		i;
@@ -96,4 +96,36 @@ char			*ft_precision_to_str(char *str_to_format, t_list *list)
 		ret_str[0] = '-';
 	}
 	return (ret_str);
+}
+
+/*
+** FT_PRECISION_PERCENT_TO_STR
+** This function is used to apply the precision flag to a '%' type argument
+** It simply duplicates the "%" string and returns the newly malloc'd address
+*/
+
+static	char	*ft_precision_percent_to_str(char *str_to_format)
+{
+	return (ft_strdup(str_to_format));
+}
+
+/*
+** FT_PRECISION
+** This function checks the type flag of t_list and send the str_to_format
+** argument to the corresponding function which will apply the precision flag
+** Returns the newly created prec_str (and it will be NULL if a malloc fails)
+*/
+
+char			*ft_precision(char *str_to_format, t_list *list)
+{
+	char *prec_str;
+
+	prec_str = 0;
+	if (list->type_flag == 's')
+		prec_str = ft_precision_s_type_to_str(str_to_format, list);
+	else if (list->type_flag == '%')
+		prec_str = ft_precision_percent_to_str(str_to_format);
+	else
+		prec_str = ft_precision_to_str(str_to_format, list);
+	return (prec_str);
 }

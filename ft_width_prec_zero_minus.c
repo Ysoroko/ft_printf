@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:03:19 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/18 10:11:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 18:56:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,15 @@ char	*ft_width_prec_zero_minus(char *str, t_list *list)
 	ret = 0;
 	width_str = 0;
 	prec_str = 0;
-	if (list->type_flag == 's')
-		prec_str = ft_precision_s_type_to_str(str, list);
-	else if (list->type_flag != 's')
-		prec_str = ft_precision_to_str(str, list);
-	if (!prec_str)
-	{
-		ft_free(&width_str, 0, 0);
+	if (!(prec_str = ft_precision(str, list)))
 		return (0);
-	}
 	if (list->width && (list->width > (int)ft_strlen(prec_str)))
 	{
 		if (!(width_str = ft_width_and_zero_to_str(list)))
+		{
+			ft_free(&prec_str, 0, 0);
 			return (0);
+		}
 	}
 	ret = ft_minus_flag(width_str, prec_str, list);
 	ft_free(&width_str, &prec_str, 0);

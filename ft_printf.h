@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/18 11:18:02 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 18:54:50 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,7 @@ char			*ft_lowercase_x_to_str(va_list *v_l, t_list *list);
 char			*ft_uppercase_x_to_str(va_list *v_l, t_list *list);
 char			*ft_minus_flag(char *w_str, char *p_str, t_list *list);
 char			*ft_width_and_zero_to_str(t_list *list);
-char			*ft_precision_to_str(char *str_to_format, t_list *list);
-char			*ft_precision_s_type_to_str(char *str_to_format, t_list *list);
+char			*ft_precision(char *str_to_format, t_list *list);
 char			*ft_width_prec_zero_minus(char *str, t_list *list);
 
 /*
