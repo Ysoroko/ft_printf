@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/15 19:16:58 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 09:45:26 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,21 +110,24 @@ static t_list	*ft_flags_to_list(char *str_percent)
 ** 0 if a malloc fails somewhere or an error occurs
 */
 
-static t_list	*ft_first_arg_help(char **t, va_list **v, char **s, int *i)
+static t_list	*ft_first_arg_help(va_list **v_l, const char **s, int *i)
 {
 	t_list	*list;
+	char	*temp;
+	char	*my_s;
 
+	my_s = (char *)(*s);
 	list = 0;
-	if (!(*t = ft_extract_str(s[*i + 1], TYPE_CHARS)))
+	if (!(temp = ft_extract_str(&my_s[(*i) + 1], TYPE_CHARS)))
 		return (0);
-	if (!(list = ft_flags_to_list(*t)))
+	if (!(list = ft_flags_to_list(temp)))
 	{
-		ft_free(t, 0, 0);
+		ft_free(&temp, 0, 0);
 		return (0);
 	}
-	if (!(ft_process_list(list, *v)))
+	if (!(ft_process_list(list, *v_l)))
 	{
-		ft_free(t, 0, &list);
+		ft_free(&temp, 0, &list);
 		return (0);
 	}
 	*i += (int)ft_strlen(list->definer_str);
@@ -146,7 +149,6 @@ int				ft_analyze_first_arg(const char *s, va_list *v_l)
 	int		i;
 	int		printed;
 	t_list	*list;
-	char	*temp;
 
 	i = -1;
 	printed = 0;
@@ -154,23 +156,10 @@ int				ft_analyze_first_arg(const char *s, va_list *v_l)
 	{
 		if (s[i] == '%')
 		{
-			if (!(temp = ft_extract_str(&s[i + 1], TYPE_CHARS)))
-				return (0);
-			if (!(list = ft_flags_to_list(temp)))
-			{
-				ft_free(&temp, 0, 0);
+			if (!(list = ft_first_arg_help(&v_l, &s, &i)))
 				return (-1);
-			}
-			if (!(ft_process_list(list, v_l)))
-			{
-				ft_free(&temp, 0, &list);
-				return (-1);
-			}
-			i += (int)ft_strlen(list->definer_str);
-			/*if (!(list = ft_first_arg_help(&temp, &v_l, (char **)&s, &i)))
-				return (-1);*/
 			printed += list->chars_printed;
-			ft_free(&temp, 0, &list);
+			ft_free(0, 0, &list);
 			if (!(s[i]))
 				return (printed);
 		}

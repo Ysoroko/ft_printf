@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/15 19:06:41 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/18 10:10:10 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC				=	ft_printf.c \
 					ft_width_prec_zero_minus.c \
 					\
 					ft_atoi_for_printf.c \
-					ft_printf_utils.c 
+					ft_printf_utils.c \
+					ft_precision.c
 
 
 BONUS			=	ft_lstadd_back.c \
@@ -57,7 +58,7 @@ aclean:		fclean
 re:			fclean all
 
 run:		
-			@ $(CC) $(SRC) main.c && ./a.out
+			@ $(CC) $(CFLAGS) $(SRC) main.c && ./a.out
 
 run2:		
 			@ $(CC) $(SRC) main2.c && ./a.out

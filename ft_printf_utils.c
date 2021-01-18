@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:25:23 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/15 19:13:04 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 09:53:36 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_list	*ft_lstnew(void)
 ** FT_FREE
 ** Used for freeing any argument pointer and setting it to 0
 ** The first two arguments are saved for freeing 'char *' type
-** The last one is for t_list data structure, and will also 
+** The last one is for t_list data structure, and will also
 ** free its content
 ** Always returns 0
 */

@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 14:59:49 by ldelmas           #+#    #+#             */
-/*   Updated: 2021/01/13 14:12:08 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 10:32:14 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,9 @@ int main()
 	file1 = fopen("test1.txt", "w+");
 	file2 = fopen("test2.txt", "w+");
 	change_fdout(&dpl, &fd);
-	/*
+
+	while (1)
+	{
 	use_colors("TEST : NO FLAGS -------- FORMATS '%sxXpd' :     ", (void*)0);
 	ft_printf("%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%xCouco%%u %s ca %pva?%X  %d\n", -245678, "Test2", hello, u, -123456);
@@ -179,8 +181,8 @@ int main()
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "* = 0");
 	ft_printf("%*xCouco%%u %*s ca %*pva?%*X  %*d\n", 0, -245678, 0, "Test2", 0, hello, 0, u, 0, -123456);
 	fprintf(file2, "%*xCouco%%u %*s ca %*pva?%*X  %*d\n", 0, -245678, 0, "Test2", 0, hello, 0, u, 0, -123456);
-	
-	
+
+
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS '*.*' -------- FORMATS 'sxXd' :    ", "*1 > 0 & *2 > 0");
 	ft_printf("%*.*xCouco%%u %*.*s ca %*pva?%*.*X  %*.*d\n", 12, 12, -245678, 20, 15, "Test2", 25, hello, 12, 25 ,u, 15, 20, -123456);
 	fprintf(file2, "%*.*xCouco%%u %*.*s ca %*pva?%*.*X  %*.*d\n", 12, 12, -245678, 20, 15, "Test2", 25, hello, 12, 25 ,u, 15, 20, -123456);
@@ -208,8 +210,8 @@ int main()
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "*1 = 0 & *2 < 0");
 	ft_printf("%*.*xCouco%%u %*.*s ca %*pva?%*.*X  %*.*d\n", 0, -30, -245678, 0, -25, "Test2", 0, hello, 0, -2, u, 0, -10, -123456);
 	fprintf(file2, "%*.*xCouco%%u %*.*s ca %*pva?%*.*X  %*.*d\n", 0, -30, -245678, 0, -25, "Test2", 0, hello, 0, -2, u, 0, -10, -123456);
-	
-	
+
+
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS '*.' -------- FORMATS 'sxXd' :", "* > 0");
 	ft_printf("%*.xCouco%%u %*.s ca %*pva?%*.X  %*.d\n", 15, -245678, 6, "Test2", 25, hello, 25 ,u, 12,  -123456);
 	fprintf(file2, "%*.xCouco%%u %*.s ca %*pva?%*.X  %*.d\n", 15, -245678, 6, "Test2", 25, hello, 25 ,u, 12,  -123456);
@@ -219,22 +221,19 @@ int main()
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "* = 0");
 	ft_printf("%*.xCouco%%u %*.s ca %*pva?%*.X  %*.d\n", 0, -245678, 0, "Test2", 0, hello, 0, u, 0,  -123456);
 	fprintf(file2, "%*.xCouco%%u %*.s ca %*pva?%*.X  %*.d\n", 0, -245678, 0, "Test2", 0, hello, 0, u, 0,  -123456);
-	
-	
+
+
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS '.*' -------- FORMATS 'sxXd' :", "* > 0");
 	ft_printf("%.*xCouco%%u %.*s ca %*pva?%.*X  %.*d\n", 25, -245678, 20, "Test2", 25, hello, 25 ,u, 12, -123456);
 	fprintf(file2, "%.*xCouco%%u %.*s ca %*pva?%.*X  %.*d\n", 25, -245678, 20, "Test2", 25, hello, 25 ,u, 12, -123456);
-	
-
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "* < 0");
 	ft_printf("%.*xCouco%%u %.*s ca %*pva?%.*X  %.*d\n", -25, -245678, -20, "Test2", -25, hello, -25 ,u, -12, -123456);
 	fprintf(file2, "%.*xCouco%%u %.*s ca %*pva?%.*X  %.*d\n", -25, -245678, -20, "Test2", -25, hello, -25 ,u, -12, -123456);
-	
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "* = 0");
 	ft_printf("%.*xCouco%%u %.*s ca %*pva?%.*X  %.*d\n", 0, -245678, 0, "Test2", 0, hello, 0, u, 0, -123456);
 	fprintf(file2, "%.*xCouco%%u %.*s ca %*pva?%.*X  %.*d\n", 0, -245678, 0, "Test2", 0, hello, 0 , u, 0, -123456);
 
-	
+
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS 'VAL.' -------- FORMATS 'sxXd' :   ", (void*)0);
 	ft_printf("%15.xCouco%%u %6.s ca %25pva?%25.X  %12.d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%15.xCouco%%u %6.s ca %25pva?%25.X  %12.d\n", -245678, "Test2", hello, u, -123456);
@@ -244,7 +243,7 @@ int main()
 	ft_printf("%15.5xCouco%%u %6.12s ca %25pva?%25.5X  %12.20d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%15.5xCouco%%u %6.12s ca %25pva?%25.5X  %12.20d\n", -245678, "Test2", hello, u, -123456);
 
-	
+
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS 'VAL.0' -------- FORMATS 'sxXd' :  ", (void*)0);
 	ft_printf("%15.0xCouco%%u %6.0s ca %pva?%25.0X  %12.0d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%15.0xCouco%%u %6.0s ca %pva?%25.0X  %12.0d\n", -245678, "Test2", hello, u, -123456);
@@ -280,7 +279,7 @@ int main()
 	ft_printf("%00000000015.15xCouco%%u %.6s ca %pva?%000000025.5X  %00000012.25d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%00000000015.15xCouco%%u %.6s ca %pva?%000000025.5X  %00000012.25d\n", -245678, "Test2", hello, u, -123456);
 
-	
+
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS '0VAL.0VAL' -------- FORMATS 'xXd' :", "1st & 2nd 0 ALONE ");
 	ft_printf("%015.015xCouco%%u %.6s ca %pva?%025.05X  %012.025d\n", -245678, "Test2", hello, u, -123456);
 	fprintf(file2, "%015.015xCouco%%u %.6s ca %pva?%025.05X  %012.025d\n", -245678, "Test2", hello, u, -123456);
@@ -336,7 +335,6 @@ int main()
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "*1 = 0 & *2 < 0");
 	ft_printf("%0*.*xCouco%%u %*.*s ca %*pva?%0*.*X  %0*.*d\n", 0, -30, -245678, 0, -25, "Test2", 0, hello, 0, -2, u, 0, -10, -123456);
 	fprintf(file2, "%0*.*xCouco%%u %*.*s ca %*pva?%0*.*X  %0*.*d\n", 0, -30, -245678, 0, -25, "Test2", 0, hello, 0, -2, u, 0, -10, -123456);
-
 
 	
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS '0.*' -------- FORMATS 'xXd' :", "* > 0");
@@ -502,7 +500,7 @@ int main()
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, "* = 0");
 	ft_printf("%-*.15xCouco%%u %.*s ca %*pva?%-*.30X  %-*.12d\n", 0, -245678, 0, "Test2", 0, hello, 0, u, 0, -123456);
 	fprintf(file2, "%-*.15xCouco%%u %.*s ca %*pva?%-*.30X  %-*.12d\n", 0, -245678, 0, "Test2", 0, hello, 0 , u, 0, -123456);	
-	*/
+
 
 	compare_files(&file1, &file2, &dpl, &fd, "TEST : FLAGS '-*.0VAL' -------- FORMATS 'xXd' :", "* > 0");
 	ft_printf("%-*.015xCouco%%u %.*s ca %*pva?%-*.030X  %-*.012d\n", 25, -245678, 20, "Test2", 25, hello, 25 ,u, 12, -123456);
@@ -634,8 +632,8 @@ int main()
 	ft_printf("COUCOU %s comment vas-tu en cette %s journée? Il fait %s", (void*)0, "horrible", (void*)0);
 	fprintf(file2, "COUCOU %s comment vas-tu en cette %s journée? Il fait %s", (void*)0, "horrible", (void*)0);
 
+	}
 	compare_files(&file1, &file2, &dpl, &fd, (void*)0, (void*)0);
-	
 	close(fd);
 	dup2(dpl, 1);
 	close(dpl);
