@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/18 10:10:10 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/18 11:09:14 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,15 +52,6 @@ clean:
 fclean:		clean
 			@ rm -f $(NAME)
 
-aclean:		fclean 
-			@ rm -f a.out test1.txt test2.txt main \
-
 re:			fclean all
 
-run:		
-			@ $(CC) $(CFLAGS) $(SRC) main.c && ./a.out
-
-run2:		
-			@ $(CC) $(SRC) main2.c && ./a.out
-
-.PHONY:		all clean fclean re bonus run
+.PHONY:		all clean fclean re

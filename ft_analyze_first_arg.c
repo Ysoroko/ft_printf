@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 09:37:44 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/18 09:45:26 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 10:50:10 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static t_list	*ft_flags_to_list(char *str_percent)
 {
 	t_list	*list;
 
-	if (!str_percent || !(list = ft_lstnew()))
+	if (!(list = ft_lstnew()))
 		return (0);
 	list->definer_str = str_percent;
 	if (!(list->before_dot = ft_extract_str(str_percent, ".")))
@@ -131,6 +131,7 @@ static t_list	*ft_first_arg_help(va_list **v_l, const char **s, int *i)
 		return (0);
 	}
 	*i += (int)ft_strlen(list->definer_str);
+	ft_free(&temp, 0, 0);
 	return (list);
 }
 

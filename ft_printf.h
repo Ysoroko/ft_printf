@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/15 19:13:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 11:08:34 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ typedef struct	s_str_with_flags_list
 #  define TYPE_CHARS "cspdiuxX%"
 # endif
 
-# ifndef ACCEPTED_CHARS
-#  define ACCEPTED_CHARS "0123456789cspdiuxX%.-*"
-# endif
-
 # ifndef BASE_10
 #  define BASE_10 "0123456789"
 # endif
@@ -66,12 +62,6 @@ int				ft_process_list(t_list *list, va_list *v_list);
 int				ft_analyze_first_arg(const char *str, va_list *v_list);
 
 /*
-** Error Checking Functions
-*/
-
-void			ft_check_flags_for_special_combo(t_list *list);
-
-/*
 ** Libft Utils
 */
 
@@ -83,10 +73,8 @@ void			ft_putchar_fd(char c, int fd);
 char			*ft_itoa(int n);
 char			*ft_strdup(const char *src);
 char			*ft_strjoin(char const *pref, char const *suff);
-char			*ft_uitoa_base(unsigned int n, char *base);
-char			*ft_ultoa_base(unsigned long n, char *base);
 int				ft_strcmp(char *s1, char *s2);
-int				ft_count_n_digits(char *str);
+
 
 /*
 ** Next Arg To Str Functions
@@ -111,12 +99,12 @@ char			*ft_width_prec_zero_minus(char *str, t_list *list);
 */
 
 char			*ft_char_alloc(int n_chars, char c);
-int				ft_str_has_other_chars(char *str, char *charset);
-int				ft_number_of_c_char_in_str(char *str, char c);
 int				ft_atoi_p(const char *str);
 t_list			*ft_lstnew(void);
 int				ft_free(char **ptr1, char **ptr2, t_list **list);
-char			*ft_replace_alloc(char **str_to_replace, char *replace_by);
 void			ft_check_if_zero_flag_is_ignored(t_list *list);
+int				ft_count_n_digits(char *str);
+char			*ft_uitoa_base(unsigned int n, char *base);
+char			*ft_ultoa_base(unsigned long n, char *base);
 
 #endif

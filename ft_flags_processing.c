@@ -6,11 +6,18 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 15:13:15 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/15 19:12:24 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 10:45:41 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** FT_PRINT_RESULT
+** This function prints the result of the ft_printf conversion on the output fd
+** It also covers a special case where we're dealing with a '\0' char which
+** must be printed (which will never be printed using ft_putstr function)
+*/
 
 static void	ft_print_result(char *s, t_list *list)
 {
@@ -40,7 +47,7 @@ static void	ft_print_result(char *s, t_list *list)
 ** Checks the flag type stored in list and depending on the type, sends
 ** va_list and t_list to the corresponding function, which extracts the next
 ** argument of printf and converts it to a string
-** Returns the resulting string
+** Returns the resulting string (which can be NULL if a malloc fails inside)
 */
 
 char		*ft_next_arg_to_str(va_list *v_l, t_list *list)
@@ -74,7 +81,7 @@ char		*ft_next_arg_to_str(va_list *v_l, t_list *list)
 ** corresponding values
 ** If the * width < 0, '-' flag is activated and abs(width) is used
 ** If the * precision < 0, it's as if the '.' flag is absent
-** (the respective field in t_list is freed and set to a NULL pointer)
+** (the respective field in t_list is set to a NULL pointer)
 */
 
 void		ft_stars_flags_process(t_list *list, va_list *v_list)
@@ -103,12 +110,12 @@ void		ft_stars_flags_process(t_list *list, va_list *v_list)
 ** FT_PROCESS_LIST is the central hub of processing all the data from t_list
 ** It processes all the necessary info to create a string, used to print on the
 ** file descriptor
-** It first checks if there are some incompatibility issues among the flags
-** Then, it applies the '*' flags if there are any
+** First, it applies the '*' flags if there are any
+** Then, it checks if the '0' flag is present and whether it is ignored or not
 ** Afterwards, it extracts the next argument of printf as a string
 ** And finally, it applies '-/0/width/precision' flags to that string to give us
 ** the final string we will print
-** Returns the length of the definer string (%xxxxxs)
+** Returns 0 in case of an error, 1 otherwise
 */
 
 int			ft_process_list(t_list *list, va_list *v_list)
