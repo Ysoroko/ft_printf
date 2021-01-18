@@ -6,7 +6,7 @@
 #    By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/02 15:19:22 by ysoroko           #+#    #+#              #
-#    Updated: 2021/01/18 11:18:35 by ysoroko          ###   ########.fr        #
+#    Updated: 2021/01/18 11:30:45 by ysoroko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,13 @@ LINK			=	ar rc
 all: 		$(NAME)
 
 $(NAME):	$(OBJS)
-			@ $(LINK) $(NAME) $(OBJS)
+			$(LINK) $(NAME) $(OBJS)
 
 clean:
-			@ rm -f $(OBJS)
+			rm -f $(OBJS)
 
 fclean:		clean
-			@ rm -f $(NAME)
+			rm -f $(NAME)
 
 re:			fclean all
 
