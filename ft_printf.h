@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:08:21 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/18 11:08:34 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/18 11:18:02 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ char			*ft_itoa(int n);
 char			*ft_strdup(const char *src);
 char			*ft_strjoin(char const *pref, char const *suff);
 int				ft_strcmp(char *s1, char *s2);
-
 
 /*
 ** Next Arg To Str Functions
