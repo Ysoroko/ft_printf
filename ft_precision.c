@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:09:59 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/18 19:03:25 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/19 09:12:01 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,22 @@ static	char	*ft_precision_to_str(char *str_to_format, t_list *list)
 }
 
 /*
-** FT_PRECISION_PERCENT_TO_STR
-** This function is used to apply the precision flag to a '%' type argument
-** It simply duplicates the "%" string and returns the newly malloc'd address
+** FT_PRECISION_P_TYPE_TO_STR
+** The difference with the 'p' (=address) type is that the precision is added
+** after the starting '0x', not before it
+** Returns the newly created string with precision applied
 */
 
-static	char	*ft_precision_percent_to_str(char *str_to_format)
+static	char	*ft_precision_p_type_to_str(char *str_to_format, t_list *list)
 {
-	return (ft_strdup(str_to_format));
+	char	*temp;
+	char	*ret;
+
+	if (!(temp = ft_precision_to_str(str_to_format + 2, list)))
+		return (0);
+	ret = ft_strjoin("0x", temp);
+	ft_free(&temp, 0, 0);
+	return (ret);
 }
 
 /*
@@ -124,7 +132,9 @@ char			*ft_precision(char *str_to_format, t_list *list)
 	if (list->type_flag == 's')
 		prec_str = ft_precision_s_type_to_str(str_to_format, list);
 	else if (list->type_flag == '%')
-		prec_str = ft_precision_percent_to_str(str_to_format);
+		prec_str = ft_strdup(str_to_format);
+	else if (list->type_flag == 'p')
+		prec_str = ft_precision_p_type_to_str(str_to_format, list);
 	else
 		prec_str = ft_precision_to_str(str_to_format, list);
 	return (prec_str);
