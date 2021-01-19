@@ -6,7 +6,7 @@
 /*   By: ysoroko <ysoroko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 10:09:59 by ysoroko           #+#    #+#             */
-/*   Updated: 2021/01/19 09:12:01 by ysoroko          ###   ########.fr       */
+/*   Updated: 2021/01/19 09:22:43 by ysoroko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ char			*ft_precision(char *str_to_format, t_list *list)
 	prec_str = 0;
 	if (list->type_flag == 's')
 		prec_str = ft_precision_s_type_to_str(str_to_format, list);
-	else if (list->type_flag == '%')
+	else if (list->type_flag == '%' || list->type_flag== 'c')
 		prec_str = ft_strdup(str_to_format);
 	else if (list->type_flag == 'p')
 		prec_str = ft_precision_p_type_to_str(str_to_format, list);
